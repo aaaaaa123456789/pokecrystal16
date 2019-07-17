@@ -1,4 +1,4 @@
-roms := pokecrystal.gbc pokecrystal11.gbc pokecrystal-au.gbc
+roms := pokecrystal.gbc
 
 crystal_obj := \
 audio.o \
@@ -15,10 +15,6 @@ engine/overworld/events.o \
 gfx/pics.o \
 gfx/sprites.o \
 lib/mobile/main.o
-
-crystal11_obj := $(crystal_obj:.o=11.o)
-crystal_au_obj := $(crystal_obj:.o=_au.o)
-
 
 ### Build tools
 
@@ -38,36 +34,26 @@ RGBLINK ?= $(RGBDS)rgblink
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all crystal crystal11 crystal_au clean tidy compare tools
+.PHONY: all clean tidy tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
 
-all: crystal
-crystal: pokecrystal.gbc
-crystal11: pokecrystal11.gbc
-crystal-au: pokecrystal-au.gbc
+all: pokecrystal.gbc
 
-clean:
-	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(crystal_au_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+clean: tidy
 	find gfx \( -name "*.[12]bpp" -o -name "*.lz" -o -name "*.gbcpal" \) -delete
 	find gfx/pokemon -mindepth 1 ! -path "gfx/pokemon/unown/*" \( -name "bitmask.asm" -o -name "frames.asm" -o -name "front.animated.tilemap" -o -name "front.dimensions" \) -delete
-	$(MAKE) clean -C tools/
 
 tidy:
-	rm -f $(roms) $(crystal_obj) $(crystal11_obj) $(crystal_au_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
+	rm -f $(roms) $(crystal_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym)
 	$(MAKE) clean -C tools/
-
-compare: $(roms)
-	@$(SHA1) -c roms.sha1
 
 tools:
 	$(MAKE) -C tools/
 
 
-$(crystal_obj):   RGBASMFLAGS =
-$(crystal11_obj): RGBASMFLAGS = -D _CRYSTAL11
-$(crystal_au_obj): RGBASMFLAGS = -D _CRYSTAL11 -D _CRYSTAL_AU
+$(crystal_obj): RGBASMFLAGS =
 
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
@@ -83,8 +69,6 @@ ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
 
 $(info $(shell $(MAKE) -C tools))
 
-$(foreach obj, $(crystal_au_obj), $(eval $(call DEP,$(obj),$(obj:_au.o=.asm))))
-$(foreach obj, $(crystal11_obj), $(eval $(call DEP,$(obj),$(obj:11.o=.asm))))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 
 endif
@@ -95,27 +79,8 @@ pokecrystal.gbc: $(crystal_obj) pokecrystal.link
 	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
 	tools/sort_symfile.sh pokecrystal.sym
 
-pokecrystal11.gbc: $(crystal11_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal11.sym -m pokecrystal11.map -l pokecrystal.link -o $@ $(crystal11_obj)
-	$(RGBFIX) -Cjv -i BYTE -k 01 -l 0x33 -m 0x10 -n 1 -p 0 -r 3 -t PM_CRYSTAL $@
-	tools/sort_symfile.sh pokecrystal11.sym
-
-pokecrystal-au.gbc: $(crystal_au_obj) pokecrystal.link
-	$(RGBLINK) -n pokecrystal-au.sym -m pokecrystal-au.map -l pokecrystal.link -o $@ $(crystal_au_obj)
-	$(RGBFIX) -Cjv -i BYTU -k 01 -l 0x33 -m 0x10 -p 0 -r 3 -t PM_CRYSTAL $@
-	tools/sort_symfile.sh pokecrystal-au.sym
-
-
-# For files that the compressor can't match, there will be a .lz file suffixed with the md5 hash of the correct uncompressed file.
-# If the hash of the uncompressed file matches, use this .lz instead.
-# This allows pngs to be used for compressed graphics and still match.
-
-%.lz: hash = $(shell tools/md5 $(*D)/$(*F) | sed "s/\(.\{8\}\).*/\1/")
 %.lz: %
-	$(eval filename := $@.$(hash))
-	$(if $(wildcard $(filename)),\
-		cp $(filename) $@,\
-		tools/lzcomp -- $< $@)
+	tools/lzcomp -- $< $@
 
 
 ### Pokemon pic animation rules
@@ -128,26 +93,6 @@ gfx/pokemon/%/bitmask.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fr
 	tools/pokemon_animation -b $^ > $@
 gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
 	tools/pokemon_animation -f $^ > $@
-
-
-### Terrible hacks to match animations. Delete these rules if you don't care about matching.
-
-# Dewgong has an unused tile id in its last frame. The tile itself is missing.
-gfx/pokemon/dewgong/frames.asm: gfx/pokemon/dewgong/front.animated.tilemap gfx/pokemon/dewgong/front.dimensions
-	tools/pokemon_animation -f $^ > $@
-	echo "	db \$$4d" >> $@
-
-# Lugia has two unused tile ids in its last frame. The tiles themselves are missing.
-gfx/pokemon/lugia/frames.asm: gfx/pokemon/lugia/front.animated.tilemap gfx/pokemon/lugia/front.dimensions
-	tools/pokemon_animation -f $^ > $@
-	echo "	db \$$5e, \$$59" >> $@
-
-# Girafarig has a redundant tile after the end. It is used in two frames, so it must be injected into the generated graphics.
-# This is more involved, so it's hacked into pokemon_animation_graphics.
-gfx/pokemon/girafarig/front.animated.2bpp: gfx/pokemon/girafarig/front.2bpp gfx/pokemon/girafarig/front.dimensions
-	tools/pokemon_animation_graphics --girafarig -o $@ $^
-gfx/pokemon/girafarig/front.animated.tilemap: gfx/pokemon/girafarig/front.2bpp gfx/pokemon/girafarig/front.dimensions
-	tools/pokemon_animation_graphics --girafarig -t $@ $^
 
 
 ### Misc file-specific graphics rules
