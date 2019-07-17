@@ -711,10 +711,4 @@ INCLUDE "engine/events/odd_egg.asm"
 
 SECTION "Mobile Stadium 2", ROMX
 
-if DEF(_CRYSTAL_AU)
-INCBIN "mobile/stadium/stadium2_au.bin"
-elif DEF(_CRYSTAL11)
-INCBIN "mobile/stadium/stadium2_11.bin"
-else
 INCBIN "mobile/stadium/stadium2.bin"
-endc
