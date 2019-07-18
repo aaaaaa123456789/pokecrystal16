@@ -183,9 +183,3 @@ To build **pokecrystal.gbc**:
 ```bash
 make
 ```
-
-To build **pokecrystal11.gbc**:
-
-```bash
-make crystal11
-```
