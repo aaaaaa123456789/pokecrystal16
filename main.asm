@@ -712,3 +712,6 @@ INCLUDE "engine/events/odd_egg.asm"
 SECTION "Mobile Stadium 2", ROMX
 
 INCBIN "mobile/stadium/stadium2.bin"
+
+; own section
+INCLUDE "data/trainers/parties.asm"

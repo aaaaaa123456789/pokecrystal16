@@ -2142,7 +2142,10 @@ wOtherDecoration::    db
 wCurEnemyItem:: db
 ENDU ; d1f7
 
-	ds 3
+wOtherTrainerType:: db ; d1f7
+wTrainerGroupBank:: db ; d1f8
+
+	ds 1
 
 wLinkBattleRNs:: ds 10 ; d1fa
 
