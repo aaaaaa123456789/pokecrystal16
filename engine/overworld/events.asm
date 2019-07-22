@@ -398,7 +398,6 @@ SetMinTwoStepWildEncounterCooldown:
 Dummy_CheckScriptFlags3Bit5:
 	call CheckBit5_ScriptFlags3
 	ret z
-	call ret_2f3e
 	ret
 
 RunSceneScript:
@@ -1494,7 +1493,6 @@ CmdQueue_Null:
 	ret
 
 CmdQueue_Null2:
-	call ret_2f3e
 	ret
 
 CmdQueue_Type4:

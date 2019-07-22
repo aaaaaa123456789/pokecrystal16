@@ -81,4 +81,3 @@ PredefPointers::
 	add_predef AnimateFrontpic
 	add_predef Unused_HOF_AnimateAlignedFrontpic ; $48
 	add_predef HOF_AnimateFrontpic
-	dbw -1, InexplicablyEmptyFunction ; ???

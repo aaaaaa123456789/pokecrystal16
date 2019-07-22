@@ -2,8 +2,7 @@
 
 LoadMenuHeader::
 	call CopyMenuHeader
-	call PushWindow
-	ret
+	jp PushWindow
 
 CopyMenuHeader::
 	ld de, wMenuHeader
@@ -23,13 +22,9 @@ MenuTextbox::
 	pop hl
 	jp PrintText
 
-; unused
-	ret
-
 LoadMenuTextbox::
 	ld hl, .MenuHeader
-	call LoadMenuHeader
-	ret
+	jp LoadMenuHeader
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
@@ -39,23 +34,17 @@ LoadMenuTextbox::
 
 MenuTextboxBackup::
 	call MenuTextbox
-	call CloseWindow
-	ret
+	jp CloseWindow
 
 LoadStandardMenuHeader::
 	ld hl, .MenuHeader
-	call LoadMenuHeader
-	ret
+	jp LoadMenuHeader
 
 .MenuHeader:
 	db MENU_BACKUP_TILES ; flags
 	menu_coords 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
 	dw 0
 	db 1 ; default option
-
-Call_ExitMenu::
-	call ExitMenu
-	ret
 
 VerticalMenu::
 	xor a
@@ -107,17 +96,15 @@ CopyNameFromMenu::
 	pop hl
 	ret
 
-YesNoBox::
-	lb bc, SCREEN_WIDTH - 6, 7
-
-PlaceYesNoBox::
-	jr _YesNoBox
-
 PlaceGenericTwoOptionBox::
 	call LoadMenuHeader
 	jr InterpretTwoOptionMenu
 
-_YesNoBox::
+YesNoBox::
+	lb bc, SCREEN_WIDTH - 6, 7
+; fallthrough
+
+PlaceYesNoBox::
 ; Return nc (yes) or c (no).
 	push bc
 	ld hl, YesNoMenuHeader
@@ -141,6 +128,7 @@ _YesNoBox::
 	add 4
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
+; fallthrough
 
 InterpretTwoOptionMenu::
 	call VerticalMenu
@@ -176,8 +164,7 @@ YesNoMenuHeader::
 
 OffsetMenuHeader::
 	call _OffsetMenuHeader
-	call PushWindow
-	ret
+	jp PushWindow
 
 _OffsetMenuHeader::
 	push de
@@ -209,8 +196,7 @@ DoNthMenu::
 	call InitMenuCursorAndButtonPermissions
 	call GetStaticMenuJoypad
 	call GetMenuJoypad
-	call MenuClickSound
-	ret
+	jp MenuClickSound
 
 SetUpMenu::
 	call DrawVariableLengthMenuBox ; ???
@@ -224,8 +210,7 @@ DrawVariableLengthMenuBox::
 	call CopyMenuData
 	call GetMenuIndexSet
 	call AutomaticGetMenuBottomCoord
-	call MenuBox
-	ret
+	jp MenuBox
 
 MenuWriteText::
 	xor a
@@ -320,11 +305,9 @@ InitMenuCursorAndButtonPermissions::
 .disallow_select
 	ld a, [wMenuDataFlags]
 	bit 2, a
-	jr z, .disallow_left_right
+	ret z
 	set D_LEFT_F, [hl]
 	set D_RIGHT_F, [hl]
-
-.disallow_left_right
 	ret
 
 GetScrollingMenuJoypad::
@@ -337,6 +320,7 @@ GetStaticMenuJoypad::
 	xor a
 	ld [wMenuJoypad], a
 	call StaticMenuJoypad
+; fallthrough
 
 ContinueGettingMenuJoypad:
 	bit A_BUTTON_F, a
@@ -399,8 +383,7 @@ PlaceMenuStrings::
 	ld d, h
 	ld e, l
 	pop hl
-	call PlaceString
-	ret
+	jp PlaceString
 
 PlaceNthMenuStrings::
 	push de
@@ -412,17 +395,7 @@ PlaceNthMenuStrings::
 	ld d, [hl]
 	ld e, a
 	pop hl
-	call PlaceString
-	ret
-
-Unreferenced_Function1f9e::
-	call GetMenuDataPointerTableEntry
-	inc hl
-	inc hl
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ret
+	jp PlaceString
 
 MenuJumptable::
 	ld a, [wMenuSelection]
@@ -476,8 +449,7 @@ ClearWindowData::
 .bytefill
 	ld bc, $10
 	xor a
-	call ByteFill
-	ret
+	jp ByteFill
 
 MenuClickSound::
 	push af
@@ -501,8 +473,7 @@ PlayClickSFX::
 MenuTextboxWaitButton::
 	call MenuTextbox
 	call WaitButton
-	call ExitMenu
-	ret
+	jp ExitMenu
 
 Place2DMenuItemName::
 	ldh [hBuffer], a
