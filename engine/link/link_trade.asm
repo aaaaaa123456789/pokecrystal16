@@ -27,7 +27,7 @@ Function16d43b:
 	call SetPalettes
 	call WaitBGMap
 	call JoyWaitAorB
-	call Call_ExitMenu
+	call ExitMenu
 	ret
 
 Tilemap_MobileTradeBorderFullscreen:
@@ -157,7 +157,7 @@ Function16d6ce:
 	call LoadStandardMenuHeader
 	call Function16d6e1
 	farcall WaitLinkTransfer
-	call Call_ExitMenu
+	call ExitMenu
 	call WaitBGMap2
 	ret
 

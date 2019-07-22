@@ -1,7 +1,15 @@
 SECTION "Scratch", SRAM
 
+UNION ; a000
 sScratch:: ds $600 ; a000
+; a600
 
+NEXTU ; a000
+sEnemyFrontPicTileCount:: db ; a000
+sPaddedEnemyFrontPic:: ds 7 * 7 tiles ; a001
+; a311
+
+ENDU ; a600
 
 SECTION "SRAM Bank 0", SRAM
 

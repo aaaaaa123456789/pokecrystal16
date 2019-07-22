@@ -599,7 +599,7 @@ OpenPartyStats:
 	call LowVolume
 	predef StatsScreenInit
 	call MaxVolume
-	call Call_ExitMenu
+	call ExitMenu
 	ld a, 0
 	ret
 
