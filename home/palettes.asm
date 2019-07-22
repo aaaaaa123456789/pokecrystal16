@@ -293,11 +293,8 @@ ClearVBank1::
 	xor a
 	call ByteFill
 
-	ld a, 0
+	xor a
 	ldh [rVBK], a
-	ret
-
-ret_d90::
 	ret
 
 ReloadSpritesNoPalettes::
@@ -316,8 +313,7 @@ ReloadSpritesNoPalettes::
 	ldh [rSVBK], a
 	ld a, 1
 	ldh [hCGBPalUpdate], a
-	call DelayFrame
-	ret
+	jp DelayFrame
 
 FarCallSwapTextboxPalettes::
 	homecall SwapTextboxPalettes

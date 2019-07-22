@@ -1,11 +1,3 @@
-Unreferenced_GetNthMove::
-	ld hl, wListMoves_MoveIndicesBuffer
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	ret
-
 GetBaseData::
 	push bc
 	push de

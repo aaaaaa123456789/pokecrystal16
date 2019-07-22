@@ -5377,7 +5377,6 @@ Function11a9ce:
 	call ExitMenu
 	farcall Stubbed_Function106462
 	farcall Function106464
-	call ret_d90
 	farcall FinishExitMenu
 	call UpdateSprites
 	ret
