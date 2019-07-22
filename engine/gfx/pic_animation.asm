@@ -620,6 +620,8 @@ PokeAnim_ConvertAndApplyBitmask:
 	ld hl, wPokeAnimGraphicStartTile
 	add [hl]
 	pop hl
+	cp $7f
+	sbc -1 ;increment if no carry
 	ld [hl], a
 	ret
 

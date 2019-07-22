@@ -1710,7 +1710,7 @@ Function89b28:
 	call Function891de
 	call ClearBGPalettes
 	call Function893e2
-	call Call_ExitMenu
+	call ExitMenu
 	call Function891ab
 	call SetPalettes
 	ret
@@ -2805,7 +2805,7 @@ Function8a241:
 .asm_8a254
 	call Function891de
 	call ClearBGPalettes
-	call Call_ExitMenu
+	call ExitMenu
 	call Function891de
 	and a
 	ret
