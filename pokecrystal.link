@@ -316,6 +316,8 @@ WRAM0
 	"Miscellaneous"
 	"Overworld Map"
 	"Video"
+	align 5
+	"16-bit WRAM home data"
 WRAMX 1
 	"WRAM 1"
 	"Enemy Party"
