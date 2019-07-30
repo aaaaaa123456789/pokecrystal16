@@ -1,11 +1,21 @@
 AddNTimes::
 ; Add bc * a to hl.
+; Preserves bc
 	and a
 	ret z
+
+	push bc
 .loop
+	rra ; and a from below and above resets carry
+	jr nc, .noadd
 	add hl, bc
-	dec a
+.noadd
+	sla c
+	rl b
+	and a
 	jr nz, .loop
+.done
+	pop bc
 	ret
 
 SimpleMultiply::
