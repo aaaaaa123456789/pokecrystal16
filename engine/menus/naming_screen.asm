@@ -698,17 +698,6 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 	scf
 	ret
 
-; unused
-	ld a, [wNamingScreenCurNameLength]
-	and a
-	ret z
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-	call NamingScreen_GetTextCursorPosition
-	ld c, [hl]
-	pop hl
-
 .loop
 	ld a, [hli]
 	cp $ff
@@ -721,8 +710,6 @@ NamingScreen_AdvanceCursor_CheckEndOfString:
 .done
 	ld a, [hl]
 	jr NamingScreen_LoadNextCharacter
-
-INCLUDE "data/text/unused_dakutens.asm"
 
 NamingScreen_DeleteCharacter:
 	ld hl, wNamingScreenCurNameLength
@@ -974,9 +961,6 @@ INCBIN "gfx/icons/mail_big.2bpp"
 	ld a, MAIL_MSG_LENGTH + 1
 	ld [wNamingScreenMaxNameLength], a
 	ret
-
-.UnusedString11f7a:
-	db "メールを　かいてね@"
 
 .InitCharset:
 	call WaitTop
@@ -1349,18 +1333,6 @@ ComposeMail_GetCursorPosition:
 MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
 	jp MailComposition_TryAddCharacter
-
-; unused
-	ld a, [wNamingScreenCurNameLength]
-	and a
-	ret z
-	cp $11
-	jr nz, .asm_121c3
-	push hl
-	ld hl, wNamingScreenCurNameLength
-	dec [hl]
-	dec [hl]
-	jr .asm_121c8
 
 .asm_121c3
 	push hl
