@@ -782,8 +782,7 @@ Unreferenced_Function97cc:
 	ret
 
 _GetMonPalettePointer:
-	ld l, a
-	ld h, $0
+	call GetPokemonIndexFromID
 	add hl, hl
 	add hl, hl
 	add hl, hl

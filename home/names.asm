@@ -109,16 +109,14 @@ GetPokemonName::
 
 ; Each name is ten characters
 	ld a, [wNamedObjectIndexBuffer]
-	dec a
-	ld d, 0
-	ld e, a
-	ld h, 0
-	ld l, a
+	call GetPokemonIndexFromID
+	ld e, l
+	ld d, h
 	add hl, hl ; hl = hl * 4
 	add hl, hl ; hl = hl * 4
 	add hl, de ; hl = (hl*4) + de
 	add hl, hl ; hl = (5*hl) + (5*hl)
-	ld de, PokemonNames
+	ld de, PokemonNames - 10
 	add hl, de
 
 ; Terminator
