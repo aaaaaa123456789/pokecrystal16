@@ -60,7 +60,7 @@ ROMX $0d
 	"Effect Commands"
 ROMX $0e
 	"Enemy Trainers"
-	"Enemy Trainer Parties"
+	"Enemy Trainer Parties 2"
 ROMX $0f
 	"Battle Core"
 ROMX $10
@@ -174,6 +174,7 @@ ROMX $40
 	"bank40_3"
 ROMX $41
 	"bank41"
+	"Enemy Trainer Parties 1"
 ROMX $42
 	"Mobile 42"
 	"Intro Logo"

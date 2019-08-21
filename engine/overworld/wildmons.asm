@@ -919,7 +919,7 @@ RandomPhoneMon:
 	call GetFarByte
 	inc hl
 	ld c, a
-	ld a, 2
+	ld a, 3
 	bit TRAINERTYPE_ITEM_F, c
 	jr z, .no_item
 	inc a
@@ -958,7 +958,8 @@ RandomPhoneMon:
 
 	inc hl ; species
 	ld a, [wTrainerGroupBank]
-	call GetFarByte
+	call GetFarHalfword
+	call GetPokemonIDFromIndex
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
