@@ -733,28 +733,6 @@ ParkBallMultiplier:
 	ld b, $ff
 	ret
 
-GetPokedexEntryBank:
-	push hl
-	push de
-	ld a, [wEnemyMonSpecies]
-	rlca
-	rlca
-	maskbits NUM_DEX_ENTRY_BANKS
-	ld hl, .PokedexEntryBanks
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hl]
-	pop de
-	pop hl
-	ret
-
-.PokedexEntryBanks:
-	db BANK("Pokedex Entries 001-064")
-	db BANK("Pokedex Entries 065-128")
-	db BANK("Pokedex Entries 129-192")
-	db BANK("Pokedex Entries 193-251")
-
 HeavyBallMultiplier:
 ; subtract 20 from catch rate if weight < 102.4 kg
 ; else add 0 to catch rate if weight < 204.8 kg
@@ -768,17 +746,23 @@ HeavyBallMultiplier:
 	ld d, 0
 	add hl, de
 	add hl, de
+	add hl, de
+	ld a, BANK(PokedexDataPointerTable)
+	call GetFarByte
+	push af
+	inc hl
 	ld a, BANK(PokedexDataPointerTable)
 	call GetFarHalfword
+	pop de
 
 .SkipText:
-	call GetPokedexEntryBank
+	ld a, d
 	call GetFarByte
 	inc hl
 	cp "@"
 	jr nz, .SkipText
 
-	call GetPokedexEntryBank
+	ld a, d
 	push bc
 	inc hl
 	inc hl
