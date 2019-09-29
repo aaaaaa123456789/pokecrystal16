@@ -19,6 +19,11 @@ dbbw: MACRO
 	dw \3
 ENDM
 
+dbbbw: MACRO
+	db \1, \2, \3
+	dw \4
+ENDM
+
 dbww: MACRO
 	db \1
 	dw \2, \3

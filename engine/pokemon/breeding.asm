@@ -461,12 +461,7 @@ GetEggMove:
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
-.loop3
-	ld a, BANK("Evolutions and Attacks")
-	call GetFarByte
-	inc hl
-	and a
-	jr nz, .loop3
+	call FarSkipEvolutions
 .loop4
 	ld a, BANK("Evolutions and Attacks")
 	call GetFarByte

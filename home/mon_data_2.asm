@@ -14,3 +14,14 @@ GetPartyLocation::
 ; Add the length of a PartyMon struct to hl a times.
 	ld bc, PARTYMON_STRUCT_LENGTH
 	jp AddNTimes
+
+FarSkipEvolutions::
+; Calls SkipEvolutions from another bank. It can't be a farcall because it uses hl.
+	ldh a, [hROMBank]
+	push af
+	ld a, BANK(SkipEvolutions)
+	rst Bankswitch
+	call SkipEvolutions
+	pop af
+	rst Bankswitch
+	ret
