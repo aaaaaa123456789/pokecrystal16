@@ -291,7 +291,7 @@ ENDM
 	enum checkpoke_command ; $2c
 checkpoke: MACRO
 	db checkpoke_command
-	db \1 ; pkmn
+	dw \1 ; pkmn
 ENDM
 
 	enum givepoke_command ; $2d
@@ -302,7 +302,7 @@ elif _NARG == 3
 	givepoke \1, \2, \3, FALSE
 else
 	db givepoke_command
-	db \1 ; pokemon
+	dw \1 ; pokemon
 	db \2 ; level
 	db \3 ; item
 	db \4 ; trainer
@@ -316,7 +316,7 @@ ENDM
 	enum giveegg_command ; $2e
 giveegg: MACRO
 	db giveegg_command
-	db \1 ; pkmn
+	dw \1 ; pkmn
 	db \2 ; level
 ENDM
 
@@ -427,7 +427,7 @@ ENDM
 	enum getmonname_command ; $40
 getmonname: MACRO
 	db getmonname_command
-	db \2 ; pokemon
+	dw \2 ; pokemon
 	db \1 ; string_buffer
 ENDM
 
@@ -561,7 +561,7 @@ ENDM
 	enum pokepic_command ; $56
 pokepic: MACRO
 	db pokepic_command
-	db \1 ; pokemon
+	dw \1 ; pokemon
 ENDM
 
 	enum closepokepic_command ; $57
@@ -597,7 +597,7 @@ ENDM
 	enum loadwildmon_command ; $5d
 loadwildmon: MACRO
 	db loadwildmon_command
-	db \1 ; pokemon
+	dw \1 ; pokemon
 	db \2 ; level
 ENDM
 

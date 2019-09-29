@@ -449,11 +449,7 @@ Script_pokepic:
 ; script command 0x56
 ; parameters: pokemon
 
-	call GetScriptByte
-	and a
-	jr nz, .ok
-	ld a, [wScriptVar]
-.ok
+	call LoadScriptPokemonID
 	ld [wCurPartySpecies], a
 	farcall Pokepic
 	ret
@@ -904,14 +900,7 @@ Script_cry:
 ; script command 0x84
 ; parameters: cry_id
 
-	call GetScriptByte
-	push af
-	call GetScriptByte
-	pop af
-	and a
-	jr nz, .ok
-	ld a, [wScriptVar]
-.ok
+	call LoadScriptPokemonID
 	call PlayMonCry
 	ret
 
@@ -1290,7 +1279,8 @@ EarthquakeMovement:
 Script_loadpikachudata:
 ; script command 0x5a
 
-	ld a, PIKACHU
+	ld hl, PIKACHU
+	call GetPokemonIDFromIndex
 	ld [wTempWildMonSpecies], a
 	ld a, 5
 	ld [wCurPartyLevel], a
@@ -1320,7 +1310,7 @@ Script_loadwildmon:
 
 	ld a, (1 << 7)
 	ld [wBattleScriptFlags], a
-	call GetScriptByte
+	call LoadScriptPokemonID
 	ld [wTempWildMonSpecies], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
@@ -1854,11 +1844,7 @@ Script_getmonname:
 ; script command 0x40
 ; parameters: string_buffer, mon_id (0 aka USE_SCRIPT_VAR to use wScriptVar)
 
-	call GetScriptByte
-	and a
-	jr nz, .gotit
-	ld a, [wScriptVar]
-.gotit
+	call LoadScriptPokemonID
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld de, wStringBuffer1
@@ -2209,7 +2195,7 @@ Script_checkpoke:
 
 	xor a
 	ld [wScriptVar], a
-	call GetScriptByte
+	call LoadScriptPokemonID
 	ld hl, wPartySpecies
 	ld de, 1
 	call IsInArray
@@ -2287,7 +2273,7 @@ Script_givepoke:
 ; script command 0x2d
 ; parameters: pokemon, level, item, trainer, trainer_name_pointer, pkmn_nickname
 
-	call GetScriptByte
+	call LoadScriptPokemonID
 	ld [wCurPartySpecies], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
@@ -2319,7 +2305,7 @@ Script_giveegg:
 	xor a ; PARTYMON
 	ld [wScriptVar], a
 	ld [wMonType], a
-	call GetScriptByte
+	call LoadScriptPokemonID
 	ld [wCurPartySpecies], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
