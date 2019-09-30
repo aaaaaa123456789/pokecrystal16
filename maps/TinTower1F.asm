@@ -15,9 +15,10 @@ TinTower1F_MapScripts:
 	scene_script .FaceSuicune ; SCENE_DEFAULT
 	scene_script .DummyScene ; SCENE_FINISHED
 
-	db 2 ; callbacks
+	db 3 ; callbacks
 	callback MAPCALLBACK_OBJECTS, .NPCsCallback
 	callback MAPCALLBACK_TILES, .StairsCallback
+	callback MAPCALLBACK_NEWMAP, .LoadReservedIDs
 
 .FaceSuicune:
 	prioritysjump .SuicuneBattle
@@ -42,11 +43,17 @@ TinTower1F_MapScripts:
 .Done:
 	return
 
+.LoadReservedIDs:
+	loadmonindex 1, RAIKOU
+	loadmonindex 2, ENTEI
+	loadmonindex 3, SUICUNE
+	return
+
 .FaceBeasts:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iftrue .FoughtSuicune
 	appear TINTOWER1F_SUICUNE
-	setval RAIKOU
+	loadmonindex 0, RAIKOU
 	special MonCheck
 	iftrue .NoRaikou
 	appear TINTOWER1F_RAIKOU
@@ -55,7 +62,7 @@ TinTower1F_MapScripts:
 .NoRaikou:
 	disappear TINTOWER1F_RAIKOU
 .CheckEntei:
-	setval ENTEI
+	loadmonindex 0, ENTEI
 	special MonCheck
 	iftrue .NoEntei
 	appear TINTOWER1F_ENTEI
@@ -84,7 +91,7 @@ TinTower1F_MapScripts:
 .SuicuneBattle:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
-	setval RAIKOU
+	loadmonindex 0, RAIKOU
 	special MonCheck
 	iftrue .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
@@ -97,7 +104,7 @@ TinTower1F_MapScripts:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
-	setval ENTEI
+	loadmonindex 0, ENTEI
 	special MonCheck
 	iftrue .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1

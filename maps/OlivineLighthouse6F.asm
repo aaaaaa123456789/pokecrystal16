@@ -6,7 +6,12 @@
 OlivineLighthouse6F_MapScripts:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, .LoadReservedID
+
+.LoadReservedID:
+	loadmonindex 1, AMPHAROS
+	return
 
 OlivineLighthouseJasmine:
 	faceplayer
@@ -107,7 +112,7 @@ OlivineLighthouseAmphy:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue .HealthyNow
 	writetext AmphyPalPalooText
-	setval AMPHAROS
+	loadmonindex 0, AMPHAROS
 	special PlaySlowCry
 	buttonsound
 	writetext AmphyBreathingLaboredText

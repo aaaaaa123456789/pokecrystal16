@@ -27,7 +27,7 @@ CeladonEusine:
 	opentext
 	writetext CeladonEusineText1
 	buttonsound
-	setval SUICUNE
+	loadmonindex 1, SUICUNE
 	special MonCheck
 	iffalse .NoSuicune
 	special BeastsCheck
