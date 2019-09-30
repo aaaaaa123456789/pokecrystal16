@@ -5,6 +5,7 @@ HandleNewMap:
 	call ResetFlashIfOutOfCave
 	call GetCurrentMapSceneID
 	call ResetBikeFlags
+	call ResetMapLockedIDs
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
 InitCommandQueue:
@@ -13,6 +14,18 @@ InitCommandQueue:
 	call RunMapCallback
 	call GetMapTimeOfDay
 	ld [wMapTimeOfDay], a
+	ret
+
+ResetMapLockedIDs:
+	ld e, NUM_MAP_LOCKED_MON_IDS
+.mon_loop
+	ld a, LOCKED_MON_ID_MAP_1 - 1
+	add a, e
+	ld l, a
+	xor a
+	call LockPokemonID
+	dec e
+	jr nz, .mon_loop
 	ret
 
 EnterMapConnection:
