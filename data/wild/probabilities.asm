@@ -1,6 +1,6 @@
 mon_prob: MACRO
 ; percent, index
-	db \1, \2 * 2
+	db \1, \2 * 3
 ENDM
 
 GrassMonProbTable:

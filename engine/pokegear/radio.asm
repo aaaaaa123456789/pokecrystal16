@@ -212,33 +212,13 @@ OaksPKMNTalk4:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld b, [hl]
+	ld d, [hl]
 	inc hl
-	ld c, [hl]
-	; bc now contains the chosen map's group and number indices.
-	push bc
+	ld e, [hl]
+	; de now contains the chosen map's group and number indices.
+	push de
 
-	; Search the JohtoGrassWildMons array for the chosen map.
-	ld hl, JohtoGrassWildMons
-.loop
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	cp -1
-	jr z, .overflow
-	inc hl
-	cp b
-	jr nz, .next
-	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
-	cp c
-	jr z, .done
-.next
-	dec hl
-	ld de, GRASS_WILDDATA_LENGTH
-	add hl, de
-	jr .loop
-
-.done
+	farcall LookUpGrassJohtoWildmons
 	; Point hl to the list of morning Pokémon., skipping percentages
 rept 4
 	inc hl
@@ -250,7 +230,7 @@ endr
 	cp DARKNESS_F
 	jr z, .loop2
 
-	ld bc, 2 * NUM_GRASSMON
+	ld bc, 3 * NUM_GRASSMON
 	call AddNTimes
 .loop3
 	; Choose one of the middle three Pokemon.
@@ -264,9 +244,11 @@ endr
 	ld d, 0
 	add hl, de
 	add hl, de
+	add hl, de
 	inc hl ; skip level
 	ld a, BANK(JohtoGrassWildMons)
-	call GetFarByte
+	call GetFarHalfword
+	call GetPokemonIDFromIndex
 	ld [wNamedObjectIndexBuffer], a
 	ld [wCurPartySpecies], a
 	call GetPokemonName
