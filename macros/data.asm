@@ -29,6 +29,19 @@ dbwww: MACRO
 	dw \2, \3, \4
 ENDM
 
+dbwbb: MACRO
+	db \1
+	dw \2
+	db \3, \4
+ENDM
+
+dbwbw: MACRO
+	db \1
+	dw \2
+	db \3
+	dw \4
+ENDM
+
 dn: MACRO ; nybbles
 rept _NARG / 2
 	db ((\1) << 4) | (\2)
