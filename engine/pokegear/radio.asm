@@ -670,15 +670,23 @@ PokedexShow1:
 	call StartRadioStation
 .loop
 	call Random
-	cp NUM_POKEMON
+	ld e, a
+	call Random
+	and $f
+	ld d, a
+	cp HIGH(NUM_POKEMON)
+	jr c, .ok
+	jr nz, .loop
+	ld a, e
+	cp LOW(NUM_POKEMON)
 	jr nc, .loop
-	inc a
-	ld c, a
-	push bc
-	call CheckCaughtMon
-	pop bc
+.ok
+	inc de
+	push de
+	call CheckCaughtMonIndex
+	pop hl
 	jr z, .loop
-	ld a, c
+	call GetPokemonIDFromIndex
 	ld [wCurPartySpecies], a
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
@@ -1598,7 +1606,14 @@ GetBuenasPassword:
 	dw .RawString ; BUENA_STRING
 
 .Mon:
-	call .GetTheIndex
+	ld h, 0
+	ld l, c
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetPokemonIDFromIndex
 	call GetPokemonName
 	ret
 

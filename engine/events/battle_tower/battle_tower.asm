@@ -393,17 +393,16 @@ ValidateBTParty:
 	ld b, h
 	ld c, l
 	ld a, [hl]
-	and a
-x = $ff
-rept ($ff + -NUM_POKEMON)
+	cp EGG
 	jr z, .invalid
-	cp x
-x = x + -1
-endr
-	jr nz, .valid
+	call IsAPokemon
+	jr nc, .valid
 
 .invalid
-	ld a, SMEARGLE
+	push hl
+	ld hl, SMEARGLE
+	call GetPokemonIDFromIndex
+	pop hl
 	ld [hl], a
 
 .valid
