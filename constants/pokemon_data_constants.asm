@@ -1,5 +1,5 @@
 ; base data struct members (see data/pokemon/base_stats/*.asm)
-BASE_DEX_NO      EQUS "(wBaseDexNo - wCurBaseData)"
+BASE_SPECIES     EQUS "(wBaseSpecies - wCurBaseData)"
 BASE_STATS       EQUS "(wBaseStats - wCurBaseData)"
 BASE_HP          EQUS "(wBaseHP - wCurBaseData)"
 BASE_ATK         EQUS "(wBaseAttack - wCurBaseData)"
