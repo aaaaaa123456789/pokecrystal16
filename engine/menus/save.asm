@@ -158,7 +158,7 @@ AddHallOfFameEntry:
 	jr nz, .loop
 	ld hl, wHallOfFamePokemonList
 	ld de, sHallOfFame
-	ld bc, wHallOfFamePokemonListEnd - wHallOfFamePokemonList + 1
+	ld bc, HOF_LENGTH
 	call CopyBytes
 	call CloseSRAM
 	ret

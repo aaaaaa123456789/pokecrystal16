@@ -204,11 +204,11 @@ sHallOfFameEnd::
 
 SECTION "SRAM Crystal Data", SRAM
 
-sMobileEventIndex:: db ; be3c
+sMobileEventIndex:: db ; bf0e
 
 sCrystalData:: ds wCrystalDataEnd - wCrystalData
 
-sMobileEventIndexBackup:: db ; be44
+sMobileEventIndexBackup:: db ; bf16
 
 
 SECTION "SRAM Battle Tower", SRAM
@@ -219,16 +219,16 @@ sBattleTowerChallengeState::
 ; 2: battle tower
 	db
 
-sBattleTower:: ; be46
+sBattleTower:: ; bf18
 sNrOfBeatenBattleTowerTrainers:: db
 sBTChoiceOfLevelGroup:: db
 ; Battle Tower trainers are saved here, so nobody appears more than once
-sBTTrainers:: ds BATTLETOWER_STREAK_LENGTH ; sbe48
+sBTTrainers:: ds BATTLETOWER_STREAK_LENGTH ; bf1a
 sBattleTowerSaveFileFlags:: db
 sBattleTowerReward:: db
 
 ; team of previous trainer
-sBTMonOfTrainers:: ; be51
+sBTMonOfTrainers:: ; bf23
 sBTMonPrevTrainer1:: dw
 sBTMonPrevTrainer2:: dw
 sBTMonPrevTrainer3:: dw
