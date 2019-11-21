@@ -213,7 +213,7 @@ bugcontestwinner: MACRO
 ENDM
 
 hof_mon: MACRO
-\1Species::  db
+\1Species::  dw
 \1ID::       dw
 \1DVs::      dw
 \1Level::    db
@@ -229,7 +229,7 @@ hall_of_fame: MACRO
 \1Mon4:: hof_mon \1Mon4
 \1Mon5:: hof_mon \1Mon5
 \1Mon6:: hof_mon \1Mon6
-\1End:: db
+\1End:: dw
 ENDM
 
 link_battle_record: MACRO
