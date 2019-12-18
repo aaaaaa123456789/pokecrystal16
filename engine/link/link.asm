@@ -651,9 +651,14 @@ Link_PrepPartyData_Gen1:
 	ld a, [hli]
 	cp -1
 	jr z, .done_party
-	ld [wTempSpecies], a
 	push hl
 	push de
+	call GetPokemonIndexFromID
+	xor a
+	cp h
+	sbc a
+	or l
+	ld [wTempSpecies], a
 	callfar ConvertMon_2to1
 	pop de
 	pop hl
@@ -692,6 +697,11 @@ Link_PrepPartyData_Gen1:
 	push de
 	push bc
 	ld a, [hl]
+	call GetPokemonIndexFromID
+	xor a
+	cp h
+	sbc a
+	or l
 	ld [wTempSpecies], a
 	callfar ConvertMon_2to1
 	pop bc
@@ -716,12 +726,17 @@ Link_PrepPartyData_Gen1:
 	ld [de], a
 	inc de
 	ld a, [bc]
-	cp MAGNEMITE
-	jr z, .steel_type
-	cp MAGNETON
+	call GetPokemonIndexFromID
+	push bc
+	ld bc, MAGNEMITE
+	call .compare
+	if MAGNETON == (MAGNEMITE + 1)
+		inc bc
+	else
+		ld bc, MAGNETON
+	endc
+	call nz, .compare
 	jr nz, .skip_steel
-
-.steel_type
 	ld a, ELECTRIC
 	ld [de], a
 	inc de
@@ -730,8 +745,6 @@ Link_PrepPartyData_Gen1:
 	jr .done_steel
 
 .skip_steel
-	push bc
-	call GetPokemonIndexFromID
 	ld b, h
 	ld c, l
 	ld hl, BaseData + BASE_TYPES - BASE_DATA_SIZE ;go one back so we don't decrement hl
@@ -740,9 +753,9 @@ Link_PrepPartyData_Gen1:
 	ld bc, BASE_CATCH_RATE - BASE_TYPES
 	ld a, BANK(BaseData)
 	call FarCopyBytes
-	pop bc
 
 .done_steel
+	pop bc
 	push bc
 	ld hl, MON_ITEM
 	add hl, bc
@@ -768,11 +781,9 @@ Link_PrepPartyData_Gen1:
 	push bc
 
 	ld a, [bc]
-	dec a
 	push bc
-	ld b, 0
-	ld c, a
-	ld hl, KantoMonSpecials
+	call GetPokemonIndexFromID
+	ld bc, KantoMonSpecials - 1
 	add hl, bc
 	ld a, BANK(KantoMonSpecials)
 	call GetFarByte
@@ -796,6 +807,14 @@ Link_PrepPartyData_Gen1:
 	inc de
 	ld h, b
 	ld l, c
+	ret
+
+.compare
+	ld a, h
+	cp b
+	ret nz
+	ld a, l
+	cp c
 	ret
 
 Link_PrepPartyData_Gen2:
@@ -976,6 +995,8 @@ Function2868a:
 	ld c, l
 	ld a, [de]
 	inc de
+	ld l, a
+	ld h, 0
 	push bc
 	push de
 	ld [wTempSpecies], a
@@ -983,6 +1004,9 @@ Function2868a:
 	pop de
 	pop bc
 	ld a, [wTempSpecies]
+	ld l, a
+	ld h, 0
+	call GetPokemonIDFromIndex
 	ld [bc], a
 	ld [wCurSpecies], a
 	ld hl, MON_HP
@@ -1887,20 +1911,28 @@ LinkTrade:
 	call LoadTradeScreenBorder
 	call SetTradeRoomBGPals
 	farcall Link_WaitBGMap
+	ld hl, MEW
+	call GetPokemonIDFromIndex
+	push af
+	ld hl, CELEBI
+	call GetPokemonIDFromIndex
+	pop hl
+	ld l, a
+	; h = MEW, l = CELEBI
 	ld b, $1
 	pop af
 	ld c, a
-	cp MEW
+	cp h
 	jr z, .loop
 	ld a, [wCurPartySpecies]
-	cp MEW
+	cp h
 	jr z, .loop
 	ld b, $2
 	ld a, c
-	cp CELEBI
+	cp l
 	jr z, .loop
 	ld a, [wCurPartySpecies]
-	cp CELEBI
+	cp l
 	jr z, .loop
 	ld b, $0
 
@@ -2006,6 +2038,13 @@ CheckTimeCapsuleCompatibility:
 	ld a, [hli]
 	cp -1
 	jr z, .checkitem
+	push hl
+	call GetPokemonIndexFromID
+	ld a, h
+	and a
+	ld a, l
+	pop hl
+	jr nz, .mon_too_new
 	cp JOHTO_POKEMON
 	jr nc, .mon_too_new
 	dec b
@@ -2049,6 +2088,8 @@ CheckTimeCapsuleCompatibility:
 	jr .done
 
 .mon_too_new
+	dec hl
+	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld a, $1
