@@ -1,6 +1,25 @@
 NPCTrade::
 	ld a, e
 	ld [wJumptableIndex], a
+
+	ld e, NPCTRADE_GIVEMON
+	call GetTradeAttribute
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetPokemonIDFromIndex
+	ld l, LOCKED_MON_ID_TRADE_SEND
+	call LockPokemonID
+
+	ld e, NPCTRADE_GETMON
+	call GetTradeAttribute
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetPokemonIDFromIndex
+	ld l, LOCKED_MON_ID_TRADE_RECEIVE
+	call LockPokemonID
+
 	call Trade_GetDialog
 	ld b, CHECK_FLAG
 	call TradeFlagAction
@@ -20,9 +39,9 @@ NPCTrade::
 	ld a, TRADE_DIALOG_CANCEL
 	jr c, .done
 
-	ld e, NPCTRADE_GIVEMON
-	call GetTradeAttribute
-	ld a, [wCurPartySpecies]
+	ld a, LOCKED_MON_ID_TRADE_SEND
+	call GetLockedPokemonID
+	ld hl, wCurPartySpecies
 	cp [hl]
 	ld a, TRADE_DIALOG_WRONG
 	jr nz, .done
@@ -50,7 +69,12 @@ NPCTrade::
 
 .done
 	call PrintTradeText
-	ret
+
+	xor a
+	ld l, LOCKED_MON_ID_TRADE_SEND
+	call LockPokemonID
+	ld l, LOCKED_MON_ID_TRADE_RECEIVE
+	jp LockPokemonID
 
 .TradeAnimation:
 	call DisableSpriteUpdates
@@ -111,35 +135,37 @@ Trade_GetDialog:
 	ret
 
 DoNPCTrade:
-	ld e, NPCTRADE_GIVEMON
-	call GetTradeAttribute
-	ld a, [hl]
+	ld a, LOCKED_MON_ID_TRADE_SEND
+	call GetLockedPokemonID
 	ld [wPlayerTrademonSpecies], a
 
-	ld e, NPCTRADE_GETMON
-	call GetTradeAttribute
-	ld a, [hl]
+	ld a, LOCKED_MON_ID_TRADE_RECEIVE
+	call GetLockedPokemonID
 	ld [wOTTrademonSpecies], a
 
 	ld a, [wPlayerTrademonSpecies]
 	ld de, wPlayerTrademonSpeciesName
 	call GetTradeMonName
-	call CopyTradeName
+	ld c, MON_NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonSpeciesName
 	call GetTradeMonName
-	call CopyTradeName
+	ld c, MON_NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
-	call CopyTradeName
+	ld c, NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld hl, wPlayerName
 	ld de, wPlayerTrademonSenderName
-	call CopyTradeName
+	ld c, NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -198,28 +224,33 @@ DoNPCTrade:
 	ld e, NPCTRADE_NICK
 	call GetTradeAttribute
 	ld de, wOTTrademonNickname
-	call CopyTradeName
+	ld c, MON_NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonNickname
-	call CopyTradeName
+	ld c, MON_NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld e, NPCTRADE_OT_NAME
 	call GetTradeAttribute
 	push hl
 	ld de, wOTTrademonOTName
-	call CopyTradeName
+	ld c, NAME_LENGTH
+	call CopyStringWithTerminator
 	pop hl
 	ld de, wOTTrademonSenderName
-	call CopyTradeName
+	ld c, NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName
-	call CopyTradeName
+	ld c, NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld e, NPCTRADE_DVS
 	call GetTradeAttribute
@@ -307,11 +338,6 @@ GetTradeMonName:
 	pop de
 	ret
 
-CopyTradeName:
-	ld bc, NAME_LENGTH
-	call CopyBytes
-	ret
-
 Unreferenced_Functionfcdfb:
 	ld bc, 4
 	call CopyBytes
@@ -343,21 +369,21 @@ Trade_CopyTwoBytesReverseEndian:
 	ret
 
 GetTradeMonNames:
-	ld e, NPCTRADE_GETMON
-	call GetTradeAttribute
-	ld a, [hl]
+	ld a, LOCKED_MON_ID_TRADE_RECEIVE
+	call GetLockedPokemonID
 	call GetTradeMonName
 
 	ld de, wStringBuffer2
-	call CopyTradeName
+	ld c, MON_NAME_LENGTH
+	call CopyStringWithTerminator
 
-	ld e, NPCTRADE_GIVEMON
-	call GetTradeAttribute
-	ld a, [hl]
+	ld a, LOCKED_MON_ID_TRADE_SEND
+	call GetLockedPokemonID
 	call GetTradeMonName
 
 	ld de, wMonOrItemNameBuffer
-	call CopyTradeName
+	ld c, MON_NAME_LENGTH
+	call CopyStringWithTerminator
 
 	ld hl, wStringBuffer1
 .loop
