@@ -672,13 +672,12 @@ PokedexShow1:
 	call Random
 	cp NUM_POKEMON
 	jr nc, .loop
+	inc a
 	ld c, a
 	push bc
-	ld a, c
 	call CheckCaughtMon
 	pop bc
 	jr z, .loop
-	inc c
 	ld a, c
 	ld [wCurPartySpecies], a
 	ld [wNamedObjectIndexBuffer], a

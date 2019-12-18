@@ -388,7 +388,6 @@ CheckStringContainsLessThanBNextCharacters:
 
 Function17d1f1:
 	ld a, [wCurPartySpecies]
-	dec a
 	call SetSeenAndCaughtMon
 
 	ld a, [wCurPartySpecies]
