@@ -248,6 +248,14 @@ sBox5::  box sBox5
 sBox6::  box sBox6
 sBox7::  box sBox7
 
+sBox1PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox2PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox3PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox4PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox5PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox6PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox7PokemonIndexes::  ds 2 * MONS_PER_BOX
+
 
 SECTION "Boxes 8-14", SRAM
 
@@ -258,6 +266,14 @@ sBox11:: box sBox11
 sBox12:: box sBox12
 sBox13:: box sBox13
 sBox14:: box sBox14
+
+sBox8PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox9PokemonIndexes::  ds 2 * MONS_PER_BOX
+sBox10PokemonIndexes:: ds 2 * MONS_PER_BOX
+sBox11PokemonIndexes:: ds 2 * MONS_PER_BOX
+sBox12PokemonIndexes:: ds 2 * MONS_PER_BOX
+sBox13PokemonIndexes:: ds 2 * MONS_PER_BOX
+sBox14PokemonIndexes:: ds 2 * MONS_PER_BOX
 
 SECTION "SRAM Mobile 1", SRAM
 

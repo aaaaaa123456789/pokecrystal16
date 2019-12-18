@@ -135,7 +135,7 @@ hSPBuffer::  dw ; ffd9
 hBGMapUpdate::    db ; ffdb
 hBGMapTileCount:: db ; ffdc
 
-	ds 1
+hTemp:: db ; ffdd
 
 hMapAnims::      db ; ffde
 hTileAnimFrame:: db ; ffdf
