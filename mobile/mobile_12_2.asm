@@ -46,6 +46,10 @@ MobileCheckOwnMonAnywhere:
 .asm_4a888
 	call CloseSRAM
 	ld c, 0
+	ld a, [wScriptVar]
+	call GetPokemonIndexFromID
+	ld d, h
+	ld e, l
 .asm_4a88d
 	ld a, [wCurBox]
 	and $f
@@ -61,40 +65,17 @@ MobileCheckOwnMonAnywhere:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [hl]
-	and a
-	jr z, .asm_4a8d1
-	push bc
-	push hl
-	ld de, sBoxMons - sBoxCount
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	push de
-	ld de, sBoxMonOT - sBoxCount
-	add hl, de
-	ld b, h
-	ld c, l
-	pop hl
-	ld d, a
-.asm_4a8ba
-	call .CheckMatch
-	jr nc, .asm_4a8c4
-	pop bc
-	call CloseSRAM
-	ret
-
-.asm_4a8c4
-	push bc
-	ld bc, BOXMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	call .CopyName
-	dec d
-	jr nz, .asm_4a8ba
-	pop bc
-
+	ld b, MONS_PER_BOX
+.box_search_loop
+	ld a, [hli]
+	cp e
+	ld a, [hli]
+	jr nz, .next_box_mon
+	cp d
+	jr z, .found_in_box
+.next_box_mon
+	dec b
+	jr nz, .box_search_loop
 .asm_4a8d1
 	inc c
 	ld a, c
@@ -102,6 +83,11 @@ MobileCheckOwnMonAnywhere:
 	jr c, .asm_4a88d
 	call CloseSRAM
 	and a
+	ret
+
+.found_in_box
+	call CloseSRAM
+	scf
 	ret
 
 .CheckMatch:
@@ -131,20 +117,20 @@ MobileCheckOwnMonAnywhere:
 	ret
 
 .BoxAddrs:
-	dba sBox1
-	dba sBox2
-	dba sBox3
-	dba sBox4
-	dba sBox5
-	dba sBox6
-	dba sBox7
-	dba sBox8
-	dba sBox9
-	dba sBox10
-	dba sBox11
-	dba sBox12
-	dba sBox13
-	dba sBox14
+	dba sBox1PokemonIndexes
+	dba sBox2PokemonIndexes
+	dba sBox3PokemonIndexes
+	dba sBox4PokemonIndexes
+	dba sBox5PokemonIndexes
+	dba sBox6PokemonIndexes
+	dba sBox7PokemonIndexes
+	dba sBox8PokemonIndexes
+	dba sBox9PokemonIndexes
+	dba sBox10PokemonIndexes
+	dba sBox11PokemonIndexes
+	dba sBox12PokemonIndexes
+	dba sBox13PokemonIndexes
+	dba sBox14PokemonIndexes
 
 .CopyName:
 	push hl
