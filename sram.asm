@@ -217,13 +217,13 @@ sBattleTowerReward:: db
 
 ; team of previous trainer
 sBTMonOfTrainers:: ; be51
-sBTMonPrevTrainer1:: db
-sBTMonPrevTrainer2:: db
-sBTMonPrevTrainer3:: db
+sBTMonPrevTrainer1:: dw
+sBTMonPrevTrainer2:: dw
+sBTMonPrevTrainer3:: dw
 ; team of preprevious trainer
-sBTMonPrevPrevTrainer1:: db
-sBTMonPrevPrevTrainer2:: db
-sBTMonPrevPrevTrainer3:: db
+sBTMonPrevPrevTrainer1:: dw
+sBTMonPrevPrevTrainer2:: dw
+sBTMonPrevPrevTrainer3:: dw
 
 
 SECTION "Boxes 1-7",  SRAM, BANK [2]
