@@ -19,3 +19,4 @@ INCLUDE "macros/scripts/gfx_anims.asm"
 INCLUDE "macros/legacy.asm"
 
 INCLUDE "macros/wram_16bit.asm"
+INCLUDE "macros/indirection.asm"
