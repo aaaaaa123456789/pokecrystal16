@@ -1,4 +1,9 @@
 EggMovePointers::
+	indirect_table 2, 1
+	indirect_entries NUM_POKEMON, EggMovePointers1
+	indirect_table_end
+
+EggMovePointers1:
 	dw BulbasaurEggMoves
 	dw NoEggMoves
 	dw NoEggMoves

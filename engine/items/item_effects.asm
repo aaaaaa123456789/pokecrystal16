@@ -862,11 +862,11 @@ MoonBallMultiplier:
 	push bc
 	ld a, [wTempEnemyMonSpecies]
 	call GetPokemonIndexFromID
-	ld bc, EvosAttacksPointers - 2
-	add hl, hl
-	add hl, bc
+	ld b, h
+	ld c, l
+	ld hl, EvosAttacksPointers
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call LoadDoubleIndirectPointer
 
 	ld a, [wCurItem]
 	ld c, a
