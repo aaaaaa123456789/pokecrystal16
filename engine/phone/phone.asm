@@ -93,18 +93,6 @@ GetRemainingSpaceInPhoneList:
 
 INCLUDE "data/phone/permanent_numbers.asm"
 
-FarPlaceString:
-	ldh a, [hROMBank]
-	push af
-	ld a, b
-	rst Bankswitch
-
-	call PlaceString
-
-	pop af
-	rst Bankswitch
-	ret
-
 CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 
@@ -497,14 +485,12 @@ Phone_CallerTextboxWithName2:
 	ld [hl], "☎"
 	inc hl
 	inc hl
-	ld a, [wPhoneScriptBank]
-	ld b, a
 	ld a, [wPhoneCaller]
 	ld e, a
 	ld a, [wPhoneCaller + 1]
 	ld d, a
-	call FarPlaceString
-	ret
+	ld a, [wPhoneScriptBank]
+	jp FarPlaceString
 
 Phone_NoSignal:
 	ld de, SFX_NO_SIGNAL
