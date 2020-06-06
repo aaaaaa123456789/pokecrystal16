@@ -1,5 +1,10 @@
 MoveDescriptions::
 ; entries correspond to move ids (see constants/move_constants.asm)
+	indirect_table 2, 1
+	indirect_entries NUM_ATTACKS, MoveDescriptions1
+	indirect_table_end
+
+MoveDescriptions1:
 	dw PoundDescription
 	dw KarateChopDescription
 	dw DoubleslapDescription
@@ -251,17 +256,8 @@ MoveDescriptions::
 	dw RockSmashDescription
 	dw WhirlpoolDescription
 	dw BeatUpDescription
-	dw MoveFCDescription
-	dw MoveFDDescription
-	dw MoveFEDescription
-	dw MoveFFDescription
-	dw Move00Description
 
-MoveFCDescription:
-MoveFDDescription:
-MoveFEDescription:
-MoveFFDescription:
-Move00Description:
+InvalidMoveDescription:
 	db "?@"
 
 PoundDescription:
