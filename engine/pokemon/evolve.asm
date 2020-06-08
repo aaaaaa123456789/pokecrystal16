@@ -444,9 +444,15 @@ LearnLevelMoves:
 	ld a, [wCurPartyLevel]
 	cp b
 	call GetNextEvoAttackByte
+	ld e, a
+	call GetNextEvoAttackByte
+	ld d, a
 	jr nz, .find_move
 
 	push hl
+	ld h, d
+	ld l, e
+	call GetMoveIDFromIndex
 	ld d, a
 	ld hl, wPartyMon1Moves
 	ld a, [wCurPartyMon]
@@ -502,6 +508,7 @@ FillMoves:
 	pop de
 .GetMove:
 	inc hl
+	inc hl
 .GetLevel:
 	call GetNextEvoAttackByte
 	and a
@@ -521,7 +528,10 @@ FillMoves:
 	push de
 	ld c, NUM_MOVES
 	ldh a, [hTemp]
-	call GetFarByte
+	push hl
+	call GetFarHalfword
+	call GetMoveIDFromIndex
+	pop hl
 	ld b, a
 .CheckRepeat:
 	ld a, [de]
@@ -562,7 +572,10 @@ FillMoves:
 
 .LearnMove:
 	ldh a, [hTemp]
-	call GetFarByte
+	push hl
+	call GetFarHalfword
+	call GetMoveIDFromIndex
+	pop hl
 	ld b, a
 	ld [de], a
 	ld a, [wEvolutionOldSpecies]
@@ -582,7 +595,7 @@ FillMoves:
 	pop hl
 	ld [hl], a
 	pop hl
-	jr .NextMove
+	jp .NextMove
 
 .done
 	pop bc
