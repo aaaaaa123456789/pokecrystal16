@@ -76,7 +76,6 @@ BattleCommand_Encore:
 	ld [wCurMoveNum], a
 	ld a, b
 	ld [wCurPlayerMove], a
-	dec a
 	ld de, wPlayerMoveStruct
 	call GetMoveData
 	jr .finish_move
@@ -107,7 +106,6 @@ BattleCommand_Encore:
 	ld [wCurEnemyMoveNum], a
 	ld a, b
 	ld [wCurEnemyMove], a
-	dec a
 	ld de, wEnemyMoveStruct
 	call GetMoveData
 
