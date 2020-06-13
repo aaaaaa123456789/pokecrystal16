@@ -1205,10 +1205,13 @@ BattleCommand_Critical:
 .CheckCritical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld de, 1
+	call GetMoveIndexFromID
+	ld de, 2
 	ld hl, CriticalHitMoves
 	push bc
-	call IsInArray
+	ld b, h
+	ld c, l
+	call IsInHalfwordArray
 	pop bc
 	jr nc, .ScopeLens
 
@@ -5784,13 +5787,19 @@ BattleCommand_TrapTarget:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld [de], a
-	ld b, a
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
 	ld hl, .Traps
 
 .find_trap_text
 	ld a, [hli]
+	cp c
+	ld a, [hli]
+	jr nz, .next_trap_text
 	cp b
 	jr z, .found_trap_text
+.next_trap_text
 	inc hl
 	inc hl
 	jr .find_trap_text
@@ -5802,11 +5811,11 @@ BattleCommand_TrapTarget:
 	jp StdBattleTextbox
 
 .Traps:
-	dbw BIND,      UsedBindText      ; 'used BIND on'
-	dbw WRAP,      WrappedByText     ; 'was WRAPPED by'
-	dbw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
-	dbw CLAMP,     ClampedByText     ; 'was CLAMPED by'
-	dbw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
+	dw BIND,      UsedBindText      ; 'used BIND on'
+	dw WRAP,      WrappedByText     ; 'was WRAPPED by'
+	dw FIRE_SPIN, FireSpinTrapText  ; 'was trapped!'
+	dw CLAMP,     ClampedByText     ; 'was CLAMPED by'
+	dw WHIRLPOOL, WhirlpoolTrapText ; 'was trapped!'
 
 INCLUDE "engine/battle/move_effects/mist.asm"
 

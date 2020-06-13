@@ -740,8 +740,7 @@ AI_Smart_MirrorMove:
 .asm_38968
 	push hl
 	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
+	call AI_CheckMoveInList
 	pop hl
 
 ; ...do nothing if he didn't use a useful move.
@@ -1307,8 +1306,7 @@ AI_Smart_Mimic:
 	ld a, [wLastPlayerCounterMove]
 	push hl
 	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
+	call AI_CheckMoveInList
 
 	pop hl
 	ret nc
@@ -1420,8 +1418,7 @@ AI_Smart_Encore:
 	push hl
 	ld a, [wLastPlayerCounterMove]
 	ld hl, EncoreMoves
-	ld de, 1
-	call IsInArray
+	call AI_CheckMoveInList
 	pop hl
 	jr nc, .asm_38c81
 
@@ -1701,8 +1698,7 @@ AI_Smart_Disable:
 	push hl
 	ld a, [wLastPlayerCounterMove]
 	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
+	call AI_CheckMoveInList
 
 	pop hl
 	jr nc, .asm_38dee
@@ -2818,34 +2814,36 @@ AIHasMoveEffect:
 AIHasMoveInArray:
 ; Return carry if the enemy has a move in array hl.
 
-	push hl
 	push de
 	push bc
-
-.next
-	ld a, [hli]
-	cp $ff
-	jr z, .done
-
-	ld b, a
-	ld c, wEnemyMonMovesEnd - wEnemyMonMoves + 1
+	push hl
+	ld b, NUM_MOVES
 	ld de, wEnemyMonMoves
-
-.check
-	dec c
-	jr z, .next
-
+.loop
 	ld a, [de]
 	inc de
-	cp b
-	jr nz, .check
-
-	scf
-
+	and a
+	jr z, .next
+	call GetMoveIndexFromID
+	ld a, h
+	ld c, l
+	pop hl
+	push hl
+	push bc
+	push de
+	ld b, a
+	ld de, 2
+	call IsInHalfwordArray
+	pop de
+	pop bc
+	jr c, .done
+.next
+	dec b
+	jr nz, .loop
 .done
+	pop hl
 	pop bc
 	pop de
-	pop hl
 	ret
 
 INCLUDE "data/battle/ai/useful_moves.asm"
@@ -2883,8 +2881,7 @@ AI_Opportunist:
 	push de
 	push bc
 	ld hl, StallMoves
-	ld de, 1
-	call IsInArray
+	call AI_CheckMoveInList
 
 	pop bc
 	pop de
@@ -3050,8 +3047,7 @@ AI_Cautious:
 	push de
 	push bc
 	ld hl, ResidualMoves
-	ld de, 1
-	call IsInArray
+	call AI_CheckMoveInList
 
 	pop bc
 	pop de
@@ -3232,3 +3228,12 @@ AI_50_50:
 	call Random
 	cp 50 percent + 1
 	ret
+
+AI_CheckMoveInList:
+	push hl
+	call GetMoveIndexFromID
+	ld b, h
+	ld c, l
+	pop hl
+	ld de, 2
+	jp IsInHalfwordArray

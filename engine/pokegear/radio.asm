@@ -1617,21 +1617,24 @@ GetBuenasPassword:
 	ret
 
 .Item:
-	call .GetTheIndex
-	call GetItemName
-	ret
-
-.Move:
-	call .GetTheIndex
-	call GetMoveName
-	ret
-
-.GetTheIndex:
 	ld h, 0
 	ld l, c
 	add hl, de
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ret
+
+.Move:
+	ld h, 0
+	ld l, c
+	add hl, hl
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	call GetMoveIDFromIndex
+	call GetMoveName
 	ret
 
 .RawString:
