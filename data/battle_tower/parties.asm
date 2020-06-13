@@ -1,13 +1,13 @@
 BattleTowerMons:
 ; 10 groups of 21 mons.
-; Each mon is one byte too long; the initial 16-bit species ID must be converted to 8-bit when loading.
+; Each mon is several bytes too long; the initial species, item and move IDs must be converted to 8-bit when loading.
 
 BattleTowerMons1:
 
 	dw JOLTEON
-
 	db MIRACLEBERRY
-	db THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
+	dw THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -32,9 +32,9 @@ BattleTowerMons1:
 	db "SANDA-SU@@@"
 
 	dw ESPEON
-
 	db LEFTOVERS
-	db MUD_SLAP, PSYCHIC_M, PSYCH_UP, TOXIC
+	dw MUD_SLAP, PSYCHIC_M, PSYCH_UP, TOXIC
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -59,9 +59,9 @@ BattleTowerMons1:
 	db "E-HUi@@@@@@"
 
 	dw UMBREON
-
 	db GOLD_BERRY
-	db SHADOW_BALL, IRON_TAIL, PSYCH_UP, TOXIC
+	dw SHADOW_BALL, IRON_TAIL, PSYCH_UP, TOXIC
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -86,9 +86,9 @@ BattleTowerMons1:
 	db "BURAtuKI-@@"
 
 	dw WOBBUFFET
-
 	db FOCUS_BAND
-	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
+	dw COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -113,9 +113,9 @@ BattleTowerMons1:
 	db "SO-NANSU@@@"
 
 	dw KANGASKHAN
-
 	db MIRACLEBERRY
-	db REVERSAL, HYPER_BEAM, EARTHQUAKE, ATTRACT
+	dw REVERSAL, HYPER_BEAM, EARTHQUAKE, ATTRACT
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -140,9 +140,9 @@ BattleTowerMons1:
 	db "GARU-RA@@@@"
 
 	dw CORSOLA
-
 	db SCOPE_LENS
-	db SURF, PSYCHIC_M, RECOVER, ANCIENTPOWER
+	dw SURF, PSYCHIC_M, RECOVER, ANCIENTPOWER
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -167,9 +167,9 @@ BattleTowerMons1:
 	db "SANI-GO@@@@"
 
 	dw MILTANK
-
 	db GOLD_BERRY
-	db BLIZZARD, EARTHQUAKE, HYPER_BEAM, TOXIC
+	dw BLIZZARD, EARTHQUAKE, HYPER_BEAM, TOXIC
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -194,9 +194,9 @@ BattleTowerMons1:
 	db "MIRUTANKU@@"
 
 	dw AERODACTYL
-
 	db LEFTOVERS
-	db HYPER_BEAM, SUPERSONIC, EARTHQUAKE, BITE
+	dw HYPER_BEAM, SUPERSONIC, EARTHQUAKE, BITE
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -221,9 +221,9 @@ BattleTowerMons1:
 	db "PUTERA@@@@@"
 
 	dw LAPRAS
-
 	db MIRACLEBERRY
-	db BLIZZARD, SURF, THUNDERBOLT, PSYCHIC_M
+	dw BLIZZARD, SURF, THUNDERBOLT, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -248,9 +248,9 @@ BattleTowerMons1:
 	db "RAPURASU@@@"
 
 	dw SNEASEL
-
 	db GOLD_BERRY
-	db SLASH, FAINT_ATTACK, SURF, BLIZZARD
+	dw SLASH, FAINT_ATTACK, SURF, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -275,9 +275,9 @@ BattleTowerMons1:
 	db "NIyu-RA@@@@"
 
 	dw PORYGON2
-
 	db BRIGHTPOWDER
-	db PSYCHIC_M, BLIZZARD, HYPER_BEAM, TRI_ATTACK
+	dw PSYCHIC_M, BLIZZARD, HYPER_BEAM, TRI_ATTACK
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -302,9 +302,9 @@ BattleTowerMons1:
 	db "PORIGON2@@@"
 
 	dw MISDREAVUS
-
 	db FOCUS_BAND
-	db PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
+	dw PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -329,9 +329,9 @@ BattleTowerMons1:
 	db "MUUMA@@@@@@"
 
 	dw HOUNDOUR
-
 	db GOLD_BERRY
-	db FAINT_ATTACK, SOLARBEAM, ROAR, SUNNY_DAY
+	dw FAINT_ATTACK, SOLARBEAM, ROAR, SUNNY_DAY
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -356,9 +356,9 @@ BattleTowerMons1:
 	db "DERUBIRU@@@"
 
 	dw GIRAFARIG
-
 	db KINGS_ROCK
-	db PSYBEAM, MUD_SLAP, SHADOW_BALL, AGILITY
+	dw PSYBEAM, MUD_SLAP, SHADOW_BALL, AGILITY
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -383,9 +383,9 @@ BattleTowerMons1:
 	db "KIRINRIKI@@"
 
 	dw BLISSEY
-
 	db QUICK_CLAW
-	db HEADBUTT, SOLARBEAM, ROLLOUT, STRENGTH
+	dw HEADBUTT, SOLARBEAM, ROLLOUT, STRENGTH
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -410,9 +410,9 @@ BattleTowerMons1:
 	db "HAPINASU@@@"
 
 	dw SNORLAX
-
 	db MIRACLEBERRY
-	db HEADBUTT, PROTECT, SNORE, SURF
+	dw HEADBUTT, PROTECT, SNORE, SURF
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -437,9 +437,9 @@ BattleTowerMons1:
 	db "KABIGON@@@@"
 
 	dw EXEGGUTOR
-
 	db KINGS_ROCK
-	db TOXIC, GIGA_DRAIN, THIEF, CONFUSION
+	dw TOXIC, GIGA_DRAIN, THIEF, CONFUSION
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -464,9 +464,9 @@ BattleTowerMons1:
 	db "NAtuSI-@@@@"
 
 	dw HERACROSS
-
 	db GOLD_BERRY
-	db REVERSAL, ENDURE, COUNTER, ROCK_SMASH
+	dw REVERSAL, ENDURE, COUNTER, ROCK_SMASH
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -491,9 +491,9 @@ BattleTowerMons1:
 	db "HERAKUROSU@"
 
 	dw UNOWN
-
 	db BERRY
-	db HIDDEN_POWER, 0, 0, 0
+	dw HIDDEN_POWER, 0, 0, 0
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -518,9 +518,9 @@ BattleTowerMons1:
 	db "ANNO-N@@@@@"
 
 	dw TAUROS
-
 	db KINGS_ROCK
-	db HEADBUTT, SWAGGER, TAIL_WHIP, ICY_WIND
+	dw HEADBUTT, SWAGGER, TAIL_WHIP, ICY_WIND
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -545,9 +545,9 @@ BattleTowerMons1:
 	db "KENTAROSU@@"
 
 	dw MR__MIME
-
 	db QUICK_CLAW
-	db TOXIC, PSYCH_UP, FIRE_PUNCH, HEADBUTT
+	dw TOXIC, PSYCH_UP, FIRE_PUNCH, HEADBUTT
+
 	dw 0 ; OT ID
 	dt 1000 ; Exp
 	; Stat exp
@@ -575,9 +575,9 @@ BattleTowerMons1:
 BattleTowerMons2:
 
 	dw UMBREON
-
 	db LEFTOVERS
-	db PROTECT, TOXIC, MUD_SLAP, ATTRACT
+	dw PROTECT, TOXIC, MUD_SLAP, ATTRACT
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -602,9 +602,9 @@ BattleTowerMons2:
 	db "BURAtuKI-@@"
 
 	dw STARMIE
-
 	db GOLD_BERRY
-	db RECOVER, PSYCHIC_M, SURF, PSYCH_UP
+	dw RECOVER, PSYCHIC_M, SURF, PSYCH_UP
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -629,9 +629,9 @@ BattleTowerMons2:
 	db "SUTA-MI-@@@"
 
 	dw GYARADOS
-
 	db MIRACLEBERRY
-	db HYPER_BEAM, DRAGON_RAGE, THUNDERBOLT, FIRE_BLAST
+	dw HYPER_BEAM, DRAGON_RAGE, THUNDERBOLT, FIRE_BLAST
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -656,9 +656,9 @@ BattleTowerMons2:
 	db "GIyaRADOSU@"
 
 	dw STEELIX
-
 	db GOLD_BERRY
-	db ROAR, IRON_TAIL, SWAGGER, EARTHQUAKE
+	dw ROAR, IRON_TAIL, SWAGGER, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -683,9 +683,9 @@ BattleTowerMons2:
 	db "HAGANE-RU@@"
 
 	dw ALAKAZAM
-
 	db BERRY_JUICE
-	db PSYCHIC_M, PSYCH_UP, TOXIC, THUNDERPUNCH
+	dw PSYCHIC_M, PSYCH_UP, TOXIC, THUNDERPUNCH
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -710,9 +710,9 @@ BattleTowerMons2:
 	db "HU-DEiN@@@@"
 
 	dw ARCANINE
-
 	db BRIGHTPOWDER
-	db FLAMETHROWER, ROAR, HYPER_BEAM, IRON_TAIL
+	dw FLAMETHROWER, ROAR, HYPER_BEAM, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -737,9 +737,9 @@ BattleTowerMons2:
 	db "UINDEi@@@@@"
 
 	dw HERACROSS
-
 	db FOCUS_BAND
-	db ENDURE, REVERSAL, MEGAHORN, EARTHQUAKE
+	dw ENDURE, REVERSAL, MEGAHORN, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -764,9 +764,9 @@ BattleTowerMons2:
 	db "HERAKUROSU@"
 
 	dw EXEGGUTOR
-
 	db LEFTOVERS
-	db HYPER_BEAM, PSYCHIC_M, TOXIC, DREAM_EATER
+	dw HYPER_BEAM, PSYCHIC_M, TOXIC, DREAM_EATER
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -791,9 +791,9 @@ BattleTowerMons2:
 	db "NAtuSI-@@@@"
 
 	dw AERODACTYL
-
 	db GOLD_BERRY
-	db REST, HYPER_BEAM, EARTHQUAKE, DRAGON_RAGE
+	dw REST, HYPER_BEAM, EARTHQUAKE, DRAGON_RAGE
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -818,9 +818,9 @@ BattleTowerMons2:
 	db "PUTERA@@@@@"
 
 	dw BLISSEY
-
 	db BRIGHTPOWDER
-	db PSYCHIC_M, SUBMISSION, SOFTBOILED, COUNTER
+	dw PSYCHIC_M, SUBMISSION, SOFTBOILED, COUNTER
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -845,9 +845,9 @@ BattleTowerMons2:
 	db "HAPINASU@@@"
 
 	dw LAPRAS
-
 	db GOLD_BERRY
-	db PSYCHIC_M, THUNDERBOLT, BLIZZARD, CONFUSE_RAY
+	dw PSYCHIC_M, THUNDERBOLT, BLIZZARD, CONFUSE_RAY
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -872,9 +872,9 @@ BattleTowerMons2:
 	db "RAPURASU@@@"
 
 	dw PIKACHU
-
 	db LIGHT_BALL
-	db THUNDERBOLT, THUNDER_WAVE, STRENGTH, TOXIC
+	dw THUNDERBOLT, THUNDER_WAVE, STRENGTH, TOXIC
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -899,9 +899,9 @@ BattleTowerMons2:
 	db "PIKATIyuU@@"
 
 	dw SCIZOR
-
 	db FOCUS_BAND
-	db STEEL_WING, SLASH, TOXIC, SANDSTORM
+	dw STEEL_WING, SLASH, TOXIC, SANDSTORM
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -926,9 +926,9 @@ BattleTowerMons2:
 	db "HAtuSAMU@@@"
 
 	dw HITMONCHAN
-
 	db GOLD_BERRY
-	db THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MEGA_PUNCH
+	dw THUNDERPUNCH, ICE_PUNCH, FIRE_PUNCH, MEGA_PUNCH
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -953,9 +953,9 @@ BattleTowerMons2:
 	db "EBIWARA-@@@"
 
 	dw TAUROS
-
 	db BRIGHTPOWDER
-	db THUNDERBOLT, EARTHQUAKE, HYPER_BEAM, BLIZZARD
+	dw THUNDERBOLT, EARTHQUAKE, HYPER_BEAM, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -980,9 +980,9 @@ BattleTowerMons2:
 	db "KENTAROSU@@"
 
 	dw AZUMARILL
-
 	db MYSTIC_WATER
-	db SURF, BLIZZARD, ATTRACT, RAIN_DANCE
+	dw SURF, BLIZZARD, ATTRACT, RAIN_DANCE
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1007,9 +1007,9 @@ BattleTowerMons2:
 	db "MARIRURI@@@"
 
 	dw MILTANK
-
 	db KINGS_ROCK
-	db EARTHQUAKE, THUNDER, ATTRACT, SURF
+	dw EARTHQUAKE, THUNDER, ATTRACT, SURF
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1034,9 +1034,9 @@ BattleTowerMons2:
 	db "MIRUTANKU@@"
 
 	dw WIGGLYTUFF
-
 	db GOLD_BERRY
-	db HYPER_BEAM, BLIZZARD, FIRE_BLAST, ATTRACT
+	dw HYPER_BEAM, BLIZZARD, FIRE_BLAST, ATTRACT
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1061,9 +1061,9 @@ BattleTowerMons2:
 	db "PUKURIN@@@@"
 
 	dw WIGGLYTUFF
-
 	db PINK_BOW
-	db PSYCHIC_M, SWAGGER, PSYCH_UP, HEADBUTT
+	dw PSYCHIC_M, SWAGGER, PSYCH_UP, HEADBUTT
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1088,9 +1088,9 @@ BattleTowerMons2:
 	db "PUKURIN@@@@"
 
 	dw NIDOKING
-
 	db BERRY
-	db BLIZZARD, EARTHQUAKE, SURF, THUNDERPUNCH
+	dw BLIZZARD, EARTHQUAKE, SURF, THUNDERPUNCH
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1115,9 +1115,9 @@ BattleTowerMons2:
 	db "NIDOKINGU@@"
 
 	dw QUAGSIRE
-
 	db QUICK_CLAW
-	db AMNESIA, EARTHQUAKE, SURF, RAIN_DANCE
+	dw AMNESIA, EARTHQUAKE, SURF, RAIN_DANCE
+
 	dw 0 ; OT ID
 	dt 8000 ; Exp
 	; Stat exp
@@ -1145,9 +1145,9 @@ BattleTowerMons2:
 BattleTowerMons3:
 
 	dw JOLTEON
-
 	db MIRACLEBERRY
-	db THUNDERBOLT, THUNDER_WAVE, ROAR, MUD_SLAP
+	dw THUNDERBOLT, THUNDER_WAVE, ROAR, MUD_SLAP
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1172,9 +1172,9 @@ BattleTowerMons3:
 	db "SANDA-SU@@@"
 
 	dw POLIWRATH
-
 	db BRIGHTPOWDER
-	db DOUBLE_TEAM, SURF, FISSURE, SUBMISSION
+	dw DOUBLE_TEAM, SURF, FISSURE, SUBMISSION
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1199,9 +1199,9 @@ BattleTowerMons3:
 	db "NIyoROBON@@"
 
 	dw STARMIE
-
 	db LEFTOVERS
-	db THUNDER_WAVE, PSYCHIC_M, RECOVER, SURF
+	dw THUNDER_WAVE, PSYCHIC_M, RECOVER, SURF
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1226,9 +1226,9 @@ BattleTowerMons3:
 	db "SUTA-MI-@@@"
 
 	dw JYNX
-
 	db GOLD_BERRY
-	db BLIZZARD, LOVELY_KISS, DREAM_EATER, ATTRACT
+	dw BLIZZARD, LOVELY_KISS, DREAM_EATER, ATTRACT
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1253,9 +1253,9 @@ BattleTowerMons3:
 	db "RU-ZIyuRA@@"
 
 	dw DUGTRIO
-
 	db KINGS_ROCK
-	db EARTHQUAKE, SLUDGE_BOMB, SLASH, MUD_SLAP
+	dw EARTHQUAKE, SLUDGE_BOMB, SLASH, MUD_SLAP
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1280,9 +1280,9 @@ BattleTowerMons3:
 	db "DAGUTORIO@@"
 
 	dw BELLOSSOM
-
 	db BRIGHTPOWDER
-	db GIGA_DRAIN, SUNNY_DAY, SOLARBEAM, DOUBLE_TEAM
+	dw GIGA_DRAIN, SUNNY_DAY, SOLARBEAM, DOUBLE_TEAM
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1307,9 +1307,9 @@ BattleTowerMons3:
 	db "KIREIHANA@@"
 
 	dw BLISSEY
-
 	db LEFTOVERS
-	db TOXIC, REFLECT, SOFTBOILED, PROTECT
+	dw TOXIC, REFLECT, SOFTBOILED, PROTECT
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1334,9 +1334,9 @@ BattleTowerMons3:
 	db "HAPINASU@@@"
 
 	dw HOUNDOOM
-
 	db CHARCOAL
-	db FLAMETHROWER, CRUNCH, SHADOW_BALL, DREAM_EATER
+	dw FLAMETHROWER, CRUNCH, SHADOW_BALL, DREAM_EATER
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1361,9 +1361,9 @@ BattleTowerMons3:
 	db "HERUGA-@@@@"
 
 	dw MACHAMP
-
 	db MIRACLEBERRY
-	db CROSS_CHOP, ICE_PUNCH, EARTHQUAKE, FIRE_BLAST
+	dw CROSS_CHOP, ICE_PUNCH, EARTHQUAKE, FIRE_BLAST
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1388,9 +1388,9 @@ BattleTowerMons3:
 	db "KAIRIKI-@@@"
 
 	dw CROBAT
-
 	db GOLD_BERRY
-	db ATTRACT, CONFUSE_RAY, TOXIC, WING_ATTACK
+	dw ATTRACT, CONFUSE_RAY, TOXIC, WING_ATTACK
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1415,9 +1415,9 @@ BattleTowerMons3:
 	db "KUROBAtuTO@"
 
 	dw PORYGON2
-
 	db BRIGHTPOWDER
-	db PSYCHIC_M, RECOVER, HYPER_BEAM, TRI_ATTACK
+	dw PSYCHIC_M, RECOVER, HYPER_BEAM, TRI_ATTACK
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1442,9 +1442,9 @@ BattleTowerMons3:
 	db "PORIGON2@@@"
 
 	dw MAROWAK
-
 	db THICK_CLUB
-	db EARTHQUAKE, RETURN, HYPER_BEAM, BONEMERANG
+	dw EARTHQUAKE, RETURN, HYPER_BEAM, BONEMERANG
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1469,9 +1469,9 @@ BattleTowerMons3:
 	db "GARAGARA@@@"
 
 	dw ELECTRODE
-
 	db BRIGHTPOWDER
-	db LIGHT_SCREEN, THUNDERBOLT, PROTECT, THUNDER
+	dw LIGHT_SCREEN, THUNDERBOLT, PROTECT, THUNDER
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1496,9 +1496,9 @@ BattleTowerMons3:
 	db "MARUMAIN@@@"
 
 	dw LAPRAS
-
 	db LEFTOVERS
-	db RAIN_DANCE, WATER_GUN, ICY_WIND, STRENGTH
+	dw RAIN_DANCE, WATER_GUN, ICY_WIND, STRENGTH
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1523,9 +1523,9 @@ BattleTowerMons3:
 	db "RAPURASU@@@"
 
 	dw LANTURN
-
 	db GOLD_BERRY
-	db RAIN_DANCE, THUNDER, SURF, FLAIL
+	dw RAIN_DANCE, THUNDER, SURF, FLAIL
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1550,9 +1550,9 @@ BattleTowerMons3:
 	db "RANTA-N@@@@"
 
 	dw ESPEON
-
 	db MIRACLEBERRY
-	db CONFUSION, SWIFT, TOXIC, PSYCH_UP
+	dw CONFUSION, SWIFT, TOXIC, PSYCH_UP
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1577,9 +1577,9 @@ BattleTowerMons3:
 	db "E-HUi@@@@@@"
 
 	dw TENTACRUEL
-
 	db KINGS_ROCK
-	db WRAP, TOXIC, SLUDGE_BOMB, BUBBLEBEAM
+	dw WRAP, TOXIC, SLUDGE_BOMB, BUBBLEBEAM
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1604,9 +1604,9 @@ BattleTowerMons3:
 	db "DOKUKURAGE@"
 
 	dw GENGAR
-
 	db GOLD_BERRY
-	db THIEF, LICK, NIGHT_SHADE, GIGA_DRAIN
+	dw THIEF, LICK, NIGHT_SHADE, GIGA_DRAIN
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1631,9 +1631,9 @@ BattleTowerMons3:
 	db "GENGA-@@@@@"
 
 	dw URSARING
-
 	db GOLD_BERRY
-	db HEADBUTT, PROTECT, ROAR, LEER
+	dw HEADBUTT, PROTECT, ROAR, LEER
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1658,9 +1658,9 @@ BattleTowerMons3:
 	db "RINGUMA@@@@"
 
 	dw FEAROW
-
 	db BRIGHTPOWDER
-	db MIRROR_MOVE, PURSUIT, PECK, SWIFT
+	dw MIRROR_MOVE, PURSUIT, PECK, SWIFT
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1685,9 +1685,9 @@ BattleTowerMons3:
 	db "ONIDORIRU@@"
 
 	dw PRIMEAPE
-
 	db MIRACLEBERRY
-	db LOW_KICK, KARATE_CHOP, REVERSAL, FOCUS_ENERGY
+	dw LOW_KICK, KARATE_CHOP, REVERSAL, FOCUS_ENERGY
+
 	dw 0 ; OT ID
 	dt 27000 ; Exp
 	; Stat exp
@@ -1715,9 +1715,9 @@ BattleTowerMons3:
 BattleTowerMons4:
 
 	dw TAUROS
-
 	db GOLD_BERRY
-	db RETURN, HYPER_BEAM, EARTHQUAKE, IRON_TAIL
+	dw RETURN, HYPER_BEAM, EARTHQUAKE, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1742,9 +1742,9 @@ BattleTowerMons4:
 	db "KENTAROSU@@"
 
 	dw KINGDRA
-
 	db LEFTOVERS
-	db SURF, DRAGONBREATH, HYPER_BEAM, BLIZZARD
+	dw SURF, DRAGONBREATH, HYPER_BEAM, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1769,9 +1769,9 @@ BattleTowerMons4:
 	db "KINGUDORA@@"
 
 	dw SNORLAX
-
 	db QUICK_CLAW
-	db ATTRACT, BODY_SLAM, PSYCH_UP, EARTHQUAKE
+	dw ATTRACT, BODY_SLAM, PSYCH_UP, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1796,9 +1796,9 @@ BattleTowerMons4:
 	db "KABIGON@@@@"
 
 	dw LAPRAS
-
 	db LEFTOVERS
-	db THUNDERBOLT, ICE_BEAM, CONFUSE_RAY, SURF
+	dw THUNDERBOLT, ICE_BEAM, CONFUSE_RAY, SURF
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1823,9 +1823,9 @@ BattleTowerMons4:
 	db "RAPURASU@@@"
 
 	dw STEELIX
-
 	db GOLD_BERRY
-	db SANDSTORM, IRON_TAIL, EARTHQUAKE, TOXIC
+	dw SANDSTORM, IRON_TAIL, EARTHQUAKE, TOXIC
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1850,9 +1850,9 @@ BattleTowerMons4:
 	db "HAGANE-RU@@"
 
 	dw ALAKAZAM
-
 	db KINGS_ROCK
-	db PSYCHIC_M, THUNDERPUNCH, RECOVER, FIRE_PUNCH
+	dw PSYCHIC_M, THUNDERPUNCH, RECOVER, FIRE_PUNCH
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1877,9 +1877,9 @@ BattleTowerMons4:
 	db "HU-DEiN@@@@"
 
 	dw STARMIE
-
 	db LEFTOVERS
-	db BLIZZARD, THUNDERBOLT, SURF, PSYCHIC_M
+	dw BLIZZARD, THUNDERBOLT, SURF, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1904,9 +1904,9 @@ BattleTowerMons4:
 	db "SUTA-MI-@@@"
 
 	dw WOBBUFFET
-
 	db GOLD_BERRY
-	db COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
+	dw COUNTER, MIRROR_COAT, SAFEGUARD, DESTINY_BOND
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1931,9 +1931,9 @@ BattleTowerMons4:
 	db "SO-NANSU@@@"
 
 	dw GOLEM
-
 	db FOCUS_BAND
-	db EXPLOSION, EARTHQUAKE, MEGA_PUNCH, ROCK_SLIDE
+	dw EXPLOSION, EARTHQUAKE, MEGA_PUNCH, ROCK_SLIDE
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1958,9 +1958,9 @@ BattleTowerMons4:
 	db "GORO-NIya@@"
 
 	dw SCIZOR
-
 	db SCOPE_LENS
-	db SLASH, STEEL_WING, PURSUIT, HYPER_BEAM
+	dw SLASH, STEEL_WING, PURSUIT, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -1985,9 +1985,9 @@ BattleTowerMons4:
 	db "HAtuSAMU@@@"
 
 	dw DUGTRIO
-
 	db KINGS_ROCK
-	db EARTHQUAKE, HYPER_BEAM, SLUDGE_BOMB, MUD_SLAP
+	dw EARTHQUAKE, HYPER_BEAM, SLUDGE_BOMB, MUD_SLAP
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2012,9 +2012,9 @@ BattleTowerMons4:
 	db "DAGUTORIO@@"
 
 	dw SLOWBRO
-
 	db MIRACLEBERRY
-	db SURF, PSYCHIC_M, EARTHQUAKE, BLIZZARD
+	dw SURF, PSYCHIC_M, EARTHQUAKE, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2039,9 +2039,9 @@ BattleTowerMons4:
 	db "YADORAN@@@@"
 
 	dw PORYGON2
-
 	db NO_ITEM
-	db CONVERSION2, CONVERSION, PSYBEAM, THIEF
+	dw CONVERSION2, CONVERSION, PSYBEAM, THIEF
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2066,9 +2066,9 @@ BattleTowerMons4:
 	db "PORIGON2@@@"
 
 	dw ARCANINE
-
 	db CHARCOAL
-	db FLAME_WHEEL, LEER, BODY_SLAM, ROAR
+	dw FLAME_WHEEL, LEER, BODY_SLAM, ROAR
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2093,9 +2093,9 @@ BattleTowerMons4:
 	db "UINDEi@@@@@"
 
 	dw FORRETRESS
-
 	db LEFTOVERS
-	db RAPID_SPIN, PROTECT, TOXIC, SANDSTORM
+	dw RAPID_SPIN, PROTECT, TOXIC, SANDSTORM
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2120,9 +2120,9 @@ BattleTowerMons4:
 	db "HUoRETOSU@@"
 
 	dw OMASTAR
-
 	db GOLD_BERRY
-	db CURSE, WATER_GUN, ANCIENTPOWER, ROCK_SMASH
+	dw CURSE, WATER_GUN, ANCIENTPOWER, ROCK_SMASH
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2147,9 +2147,9 @@ BattleTowerMons4:
 	db "OMUSUTA-@@@"
 
 	dw CHARIZARD
-
 	db KINGS_ROCK
-	db FIRE_SPIN, DRAGON_RAGE, FLY, SLASH
+	dw FIRE_SPIN, DRAGON_RAGE, FLY, SLASH
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2174,9 +2174,9 @@ BattleTowerMons4:
 	db "RIZA-DON@@@"
 
 	dw EXEGGUTOR
-
 	db BRIGHTPOWDER
-	db EGG_BOMB, STOMP, PSYCH_UP, CONFUSION
+	dw EGG_BOMB, STOMP, PSYCH_UP, CONFUSION
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2201,9 +2201,9 @@ BattleTowerMons4:
 	db "NAtuSI-@@@@"
 
 	dw HYPNO
-
 	db BRIGHTPOWDER
-	db CONFUSION, THUNDERPUNCH, HEADBUTT, DISABLE
+	dw CONFUSION, THUNDERPUNCH, HEADBUTT, DISABLE
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2228,9 +2228,9 @@ BattleTowerMons4:
 	db "SURI-PA-@@@"
 
 	dw MUK
-
 	db QUICK_CLAW
-	db SCREECH, TOXIC, SLUDGE, HARDEN
+	dw SCREECH, TOXIC, SLUDGE, HARDEN
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2255,9 +2255,9 @@ BattleTowerMons4:
 	db "BETOBETON@@"
 
 	dw ELECTABUZZ
-
 	db KINGS_ROCK
-	db LIGHT_SCREEN, THUNDERPUNCH, SWIFT, SNORE
+	dw LIGHT_SCREEN, THUNDERPUNCH, SWIFT, SNORE
+
 	dw 0 ; OT ID
 	dt 64000 ; Exp
 	; Stat exp
@@ -2285,9 +2285,9 @@ BattleTowerMons4:
 BattleTowerMons5:
 
 	dw KINGDRA
-
 	db GOLD_BERRY
-	db SURF, HYPER_BEAM, BLIZZARD, DRAGONBREATH
+	dw SURF, HYPER_BEAM, BLIZZARD, DRAGONBREATH
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2312,9 +2312,9 @@ BattleTowerMons5:
 	db "KINGUDORA@@"
 
 	dw HOUNDOOM
-
 	db MIRACLEBERRY
-	db REST, CRUNCH, DREAM_EATER, FLAMETHROWER
+	dw REST, CRUNCH, DREAM_EATER, FLAMETHROWER
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2339,9 +2339,9 @@ BattleTowerMons5:
 	db "HERUGA-@@@@"
 
 	dw SHUCKLE
-
 	db LEFTOVERS
-	db SANDSTORM, REST, TOXIC, WRAP
+	dw SANDSTORM, REST, TOXIC, WRAP
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2366,9 +2366,9 @@ BattleTowerMons5:
 	db "TUBOTUBO@@@"
 
 	dw SNORLAX
-
 	db LEFTOVERS
-	db HYPER_BEAM, EARTHQUAKE, SURF, PSYCH_UP
+	dw HYPER_BEAM, EARTHQUAKE, SURF, PSYCH_UP
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2393,9 +2393,9 @@ BattleTowerMons5:
 	db "KABIGON@@@@"
 
 	dw LAPRAS
-
 	db GOLD_BERRY
-	db THUNDERBOLT, SURF, CONFUSE_RAY, BLIZZARD
+	dw THUNDERBOLT, SURF, CONFUSE_RAY, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2420,9 +2420,9 @@ BattleTowerMons5:
 	db "RAPURASU@@@"
 
 	dw JOLTEON
-
 	db KINGS_ROCK
-	db THUNDERBOLT, THUNDER_WAVE, SHADOW_BALL, HIDDEN_POWER
+	dw THUNDERBOLT, THUNDER_WAVE, SHADOW_BALL, HIDDEN_POWER
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2447,9 +2447,9 @@ BattleTowerMons5:
 	db "SANDA-SU@@@"
 
 	dw SCIZOR
-
 	db LEFTOVERS
-	db HYPER_BEAM, SLASH, AGILITY, METAL_CLAW
+	dw HYPER_BEAM, SLASH, AGILITY, METAL_CLAW
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2474,9 +2474,9 @@ BattleTowerMons5:
 	db "HAtuSAMU@@@"
 
 	dw SLOWKING
-
 	db MINT_BERRY
-	db REST, SURF, PSYCHIC_M, AMNESIA
+	dw REST, SURF, PSYCHIC_M, AMNESIA
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2501,9 +2501,9 @@ BattleTowerMons5:
 	db "YADOKINGU@@"
 
 	dw MACHAMP
-
 	db GOLD_BERRY
-	db CROSS_CHOP, EARTHQUAKE, FIRE_BLAST, THUNDERPUNCH
+	dw CROSS_CHOP, EARTHQUAKE, FIRE_BLAST, THUNDERPUNCH
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2528,9 +2528,9 @@ BattleTowerMons5:
 	db "KAIRIKI-@@@"
 
 	dw STARMIE
-
 	db SCOPE_LENS
-	db THUNDER_WAVE, RECOVER, THUNDERBOLT, SURF
+	dw THUNDER_WAVE, RECOVER, THUNDERBOLT, SURF
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2555,9 +2555,9 @@ BattleTowerMons5:
 	db "SUTA-MI-@@@"
 
 	dw DUGTRIO
-
 	db KINGS_ROCK
-	db EARTHQUAKE, SLASH, HYPER_BEAM, SLUDGE_BOMB
+	dw EARTHQUAKE, SLASH, HYPER_BEAM, SLUDGE_BOMB
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2582,9 +2582,9 @@ BattleTowerMons5:
 	db "DAGUTORIO@@"
 
 	dw ELECTRODE
-
 	db MIRACLEBERRY
-	db THUNDERBOLT, EXPLOSION, MIRROR_COAT, REST
+	dw THUNDERBOLT, EXPLOSION, MIRROR_COAT, REST
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2609,9 +2609,9 @@ BattleTowerMons5:
 	db "MARUMAIN@@@"
 
 	dw AERODACTYL
-
 	db KINGS_ROCK
-	db HYPER_BEAM, EARTHQUAKE, FIRE_BLAST, IRON_TAIL
+	dw HYPER_BEAM, EARTHQUAKE, FIRE_BLAST, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2636,9 +2636,9 @@ BattleTowerMons5:
 	db "PUTERA@@@@@"
 
 	dw CROBAT
-
 	db LEFTOVERS
-	db CONFUSE_RAY, ATTRACT, HYPER_BEAM, TOXIC
+	dw CONFUSE_RAY, ATTRACT, HYPER_BEAM, TOXIC
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2663,9 +2663,9 @@ BattleTowerMons5:
 	db "KUROBAtuTO@"
 
 	dw ZAPDOS
-
 	db MIRACLEBERRY
-	db DRILL_PECK, THUNDERBOLT, THUNDER_WAVE, HYPER_BEAM
+	dw DRILL_PECK, THUNDERBOLT, THUNDER_WAVE, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2690,9 +2690,9 @@ BattleTowerMons5:
 	db "SANDA-@@@@@"
 
 	dw SKARMORY
-
 	db GOLD_BERRY
-	db SANDSTORM, FLY, STEEL_WING, TOXIC
+	dw SANDSTORM, FLY, STEEL_WING, TOXIC
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2717,9 +2717,9 @@ BattleTowerMons5:
 	db "EA-MUDO@@@@"
 
 	dw FORRETRESS
-
 	db LEFTOVERS
-	db SANDSTORM, TOXIC, EXPLOSION, SWAGGER
+	dw SANDSTORM, TOXIC, EXPLOSION, SWAGGER
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2744,9 +2744,9 @@ BattleTowerMons5:
 	db "HUoRETOSU@@"
 
 	dw STEELIX
-
 	db MIRACLEBERRY
-	db SANDSTORM, IRON_TAIL, REST, EARTHQUAKE
+	dw SANDSTORM, IRON_TAIL, REST, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2771,9 +2771,9 @@ BattleTowerMons5:
 	db "HAGANE-RU@@"
 
 	dw GIRAFARIG
-
 	db SCOPE_LENS
-	db DREAM_EATER, CRUNCH, PSYCHIC_M, EARTHQUAKE
+	dw DREAM_EATER, CRUNCH, PSYCHIC_M, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2798,9 +2798,9 @@ BattleTowerMons5:
 	db "KIRINRIKI@@"
 
 	dw GYARADOS
-
 	db MIRACLEBERRY
-	db HYPER_BEAM, SURF, RAIN_DANCE, ZAP_CANNON
+	dw HYPER_BEAM, SURF, RAIN_DANCE, ZAP_CANNON
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2825,9 +2825,9 @@ BattleTowerMons5:
 	db "GIyaRADOSU@"
 
 	dw ARTICUNO
-
 	db GOLD_BERRY
-	db BLIZZARD, HYPER_BEAM, ROAR, ICY_WIND
+	dw BLIZZARD, HYPER_BEAM, ROAR, ICY_WIND
+
 	dw 0 ; OT ID
 	dt 125000 ; Exp
 	; Stat exp
@@ -2855,9 +2855,9 @@ BattleTowerMons5:
 BattleTowerMons6:
 
 	dw KINGDRA
-
 	db LEFTOVERS
-	db DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
+	dw DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -2882,9 +2882,9 @@ BattleTowerMons6:
 	db "KINGUDORA@@"
 
 	dw TYRANITAR
-
 	db GOLD_BERRY
-	db CRUNCH, EARTHQUAKE, ROCK_SLIDE, HYPER_BEAM
+	dw CRUNCH, EARTHQUAKE, ROCK_SLIDE, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -2909,9 +2909,9 @@ BattleTowerMons6:
 	db "BANGIRASU@@"
 
 	dw HOUNDOOM
-
 	db MIRACLEBERRY
-	db FLAMETHROWER, CRUNCH, DREAM_EATER, REST
+	dw FLAMETHROWER, CRUNCH, DREAM_EATER, REST
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -2936,9 +2936,9 @@ BattleTowerMons6:
 	db "HERUGA-@@@@"
 
 	dw PORYGON2
-
 	db LEFTOVERS
-	db BLIZZARD, RECOVER, TOXIC, PSYCHIC_M
+	dw BLIZZARD, RECOVER, TOXIC, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -2963,9 +2963,9 @@ BattleTowerMons6:
 	db "PORIGON2@@@"
 
 	dw MACHAMP
-
 	db QUICK_CLAW
-	db FIRE_PUNCH, CROSS_CHOP, THUNDERPUNCH, EARTHQUAKE
+	dw FIRE_PUNCH, CROSS_CHOP, THUNDERPUNCH, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -2990,9 +2990,9 @@ BattleTowerMons6:
 	db "KAIRIKI-@@@"
 
 	dw ZAPDOS
-
 	db MINT_BERRY
-	db REST, DRILL_PECK, THUNDERBOLT, THUNDER_WAVE
+	dw REST, DRILL_PECK, THUNDERBOLT, THUNDER_WAVE
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3017,9 +3017,9 @@ BattleTowerMons6:
 	db "SANDA-@@@@@"
 
 	dw WOBBUFFET
-
 	db GOLD_BERRY
-	db COUNTER, MIRROR_COAT, DESTINY_BOND, SAFEGUARD
+	dw COUNTER, MIRROR_COAT, DESTINY_BOND, SAFEGUARD
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3044,9 +3044,9 @@ BattleTowerMons6:
 	db "SO-NANSU@@@"
 
 	dw AERODACTYL
-
 	db LEFTOVERS
-	db HYPER_BEAM, SUPERSONIC, EARTHQUAKE, BITE
+	dw HYPER_BEAM, SUPERSONIC, EARTHQUAKE, BITE
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3071,9 +3071,9 @@ BattleTowerMons6:
 	db "PUTERA@@@@@"
 
 	dw DRAGONITE
-
 	db MIRACLEBERRY
-	db HYPER_BEAM, ICY_WIND, THUNDERBOLT, SURF
+	dw HYPER_BEAM, ICY_WIND, THUNDERBOLT, SURF
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3098,9 +3098,9 @@ BattleTowerMons6:
 	db "KAIRIyu-@@@"
 
 	dw UMBREON
-
 	db GOLD_BERRY
-	db MUD_SLAP, MOONLIGHT, PSYCHIC_M, FAINT_ATTACK
+	dw MUD_SLAP, MOONLIGHT, PSYCHIC_M, FAINT_ATTACK
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3125,9 +3125,9 @@ BattleTowerMons6:
 	db "BURAtuKI-@@"
 
 	dw ARCANINE
-
 	db CHARCOAL
-	db FLAMETHROWER, CRUNCH, EXTREMESPEED, IRON_TAIL
+	dw FLAMETHROWER, CRUNCH, EXTREMESPEED, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3152,9 +3152,9 @@ BattleTowerMons6:
 	db "UINDEi@@@@@"
 
 	dw SKARMORY
-
 	db MIRACLEBERRY
-	db STEEL_WING, FLY, TOXIC, PROTECT
+	dw STEEL_WING, FLY, TOXIC, PROTECT
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3179,9 +3179,9 @@ BattleTowerMons6:
 	db "EA-MUDO@@@@"
 
 	dw BLISSEY
-
 	db LEFTOVERS
-	db SOFTBOILED, TOXIC, PROTECT, PSYCHIC_M
+	dw SOFTBOILED, TOXIC, PROTECT, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3206,9 +3206,9 @@ BattleTowerMons6:
 	db "HAPINASU@@@"
 
 	dw SNORLAX
-
 	db PINK_BOW
-	db ROCK_SLIDE, SURF, BODY_SLAM, EARTHQUAKE
+	dw ROCK_SLIDE, SURF, BODY_SLAM, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3233,9 +3233,9 @@ BattleTowerMons6:
 	db "KABIGON@@@@"
 
 	dw HERACROSS
-
 	db FOCUS_BAND
-	db REVERSAL, MEGAHORN, EARTHQUAKE, COUNTER
+	dw REVERSAL, MEGAHORN, EARTHQUAKE, COUNTER
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3260,9 +3260,9 @@ BattleTowerMons6:
 	db "HERAKUROSU@"
 
 	dw JYNX
-
 	db MIRACLEBERRY
-	db BLIZZARD, PSYCHIC_M, SHADOW_BALL, ICY_WIND
+	dw BLIZZARD, PSYCHIC_M, SHADOW_BALL, ICY_WIND
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3287,9 +3287,9 @@ BattleTowerMons6:
 	db "RU-ZIyuRA@@"
 
 	dw BLASTOISE
-
 	db GOLD_BERRY
-	db SURF, EARTHQUAKE, RAPID_SPIN, BLIZZARD
+	dw SURF, EARTHQUAKE, RAPID_SPIN, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3314,9 +3314,9 @@ BattleTowerMons6:
 	db "KAMEtuKUSU@"
 
 	dw RHYDON
-
 	db QUICK_CLAW
-	db EARTHQUAKE, SURF, IRON_TAIL, ROCK_SLIDE
+	dw EARTHQUAKE, SURF, IRON_TAIL, ROCK_SLIDE
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3341,9 +3341,9 @@ BattleTowerMons6:
 	db "SAIDON@@@@@"
 
 	dw SANDSLASH
-
 	db SCOPE_LENS
-	db EARTHQUAKE, SLASH, HYPER_BEAM, SNORE
+	dw EARTHQUAKE, SLASH, HYPER_BEAM, SNORE
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3368,9 +3368,9 @@ BattleTowerMons6:
 	db "SANDOPAN@@@"
 
 	dw PARASECT
-
 	db GOLD_BERRY
-	db SPORE, GIGA_DRAIN, HYPER_BEAM, SLUDGE_BOMB
+	dw SPORE, GIGA_DRAIN, HYPER_BEAM, SLUDGE_BOMB
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3395,9 +3395,9 @@ BattleTowerMons6:
 	db "PARASEKUTO@"
 
 	dw GOLEM
-
 	db BRIGHTPOWDER
-	db EXPLOSION, EARTHQUAKE, FIRE_PUNCH, FRUSTRATION
+	dw EXPLOSION, EARTHQUAKE, FIRE_PUNCH, FRUSTRATION
+
 	dw 0 ; OT ID
 	dt 216000 ; Exp
 	; Stat exp
@@ -3425,9 +3425,9 @@ BattleTowerMons6:
 BattleTowerMons7:
 
 	dw JOLTEON
-
 	db MIRACLEBERRY
-	db THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
+	dw THUNDERBOLT, HYPER_BEAM, SHADOW_BALL, ROAR
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3452,9 +3452,9 @@ BattleTowerMons7:
 	db "SANDA-SU@@@"
 
 	dw VAPOREON
-
 	db LEFTOVERS
-	db BLIZZARD, SHADOW_BALL, SURF, MUD_SLAP
+	dw BLIZZARD, SHADOW_BALL, SURF, MUD_SLAP
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3479,9 +3479,9 @@ BattleTowerMons7:
 	db "SIyaWA-ZU@@"
 
 	dw UMBREON
-
 	db GOLD_BERRY
-	db FAINT_ATTACK, MOONLIGHT, PSYCH_UP, TOXIC
+	dw FAINT_ATTACK, MOONLIGHT, PSYCH_UP, TOXIC
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3506,9 +3506,9 @@ BattleTowerMons7:
 	db "BURAtuKI-@@"
 
 	dw BLISSEY
-
 	db GOLD_BERRY
-	db COUNTER, SOFTBOILED, SHADOW_BALL, THUNDERBOLT
+	dw COUNTER, SOFTBOILED, SHADOW_BALL, THUNDERBOLT
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3533,9 +3533,9 @@ BattleTowerMons7:
 	db "HAPINASU@@@"
 
 	dw SNORLAX
-
 	db LEFTOVERS
-	db ROCK_SLIDE, EARTHQUAKE, BLIZZARD, SHADOW_BALL
+	dw ROCK_SLIDE, EARTHQUAKE, BLIZZARD, SHADOW_BALL
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3560,9 +3560,9 @@ BattleTowerMons7:
 	db "KABIGON@@@@"
 
 	dw HOUNDOOM
-
 	db KINGS_ROCK
-	db CRUNCH, FLAMETHROWER, FAINT_ATTACK, ROAR
+	dw CRUNCH, FLAMETHROWER, FAINT_ATTACK, ROAR
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3587,9 +3587,9 @@ BattleTowerMons7:
 	db "HERUGA-@@@@"
 
 	dw TYRANITAR
-
 	db LEFTOVERS
-	db EARTHQUAKE, CRUNCH, ROCK_SLIDE, HYPER_BEAM
+	dw EARTHQUAKE, CRUNCH, ROCK_SLIDE, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3614,9 +3614,9 @@ BattleTowerMons7:
 	db "BANGIRASU@@"
 
 	dw ZAPDOS
-
 	db GOLD_BERRY
-	db THUNDERBOLT, DRILL_PECK, THUNDER_WAVE, HYPER_BEAM
+	dw THUNDERBOLT, DRILL_PECK, THUNDER_WAVE, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3641,9 +3641,9 @@ BattleTowerMons7:
 	db "SANDA-@@@@@"
 
 	dw EXEGGUTOR
-
 	db MIRACLEBERRY
-	db REST, EXPLOSION, PSYCHIC_M, GIGA_DRAIN
+	dw REST, EXPLOSION, PSYCHIC_M, GIGA_DRAIN
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3668,9 +3668,9 @@ BattleTowerMons7:
 	db "NAtuSI-@@@@"
 
 	dw UMBREON
-
 	db GOLD_BERRY
-	db MOONLIGHT, FAINT_ATTACK, PSYCHIC_M, SHADOW_BALL
+	dw MOONLIGHT, FAINT_ATTACK, PSYCHIC_M, SHADOW_BALL
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3695,9 +3695,9 @@ BattleTowerMons7:
 	db "BURAtuKI-@@"
 
 	dw GYARADOS
-
 	db BRIGHTPOWDER
-	db SURF, THUNDERBOLT, HYPER_BEAM, ROAR
+	dw SURF, THUNDERBOLT, HYPER_BEAM, ROAR
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3722,9 +3722,9 @@ BattleTowerMons7:
 	db "GIyaRADOSU@"
 
 	dw QUAGSIRE
-
 	db MIRACLEBERRY
-	db EARTHQUAKE, SURF, SLUDGE_BOMB, IRON_TAIL
+	dw EARTHQUAKE, SURF, SLUDGE_BOMB, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3749,9 +3749,9 @@ BattleTowerMons7:
 	db "NUO-@@@@@@@"
 
 	dw URSARING
-
 	db SCOPE_LENS
-	db SLASH, EARTHQUAKE, HYPER_BEAM, THUNDERPUNCH
+	dw SLASH, EARTHQUAKE, HYPER_BEAM, THUNDERPUNCH
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3776,9 +3776,9 @@ BattleTowerMons7:
 	db "RINGUMA@@@@"
 
 	dw MR__MIME
-
 	db KINGS_ROCK
-	db REFLECT, FIRE_PUNCH, PSYCHIC_M, ENCORE
+	dw REFLECT, FIRE_PUNCH, PSYCHIC_M, ENCORE
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3803,9 +3803,9 @@ BattleTowerMons7:
 	db "BARIYA-DO@@"
 
 	dw PRIMEAPE
-
 	db QUICK_CLAW
-	db CROSS_CHOP, ICE_PUNCH, THUNDERPUNCH, ROCK_SLIDE
+	dw CROSS_CHOP, ICE_PUNCH, THUNDERPUNCH, ROCK_SLIDE
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3830,9 +3830,9 @@ BattleTowerMons7:
 	db "OKORIZARU@@"
 
 	dw GIRAFARIG
-
 	db GOLD_BERRY
-	db AGILITY, BATON_PASS, CRUNCH, EARTHQUAKE
+	dw AGILITY, BATON_PASS, CRUNCH, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3857,9 +3857,9 @@ BattleTowerMons7:
 	db "KIRINRIKI@@"
 
 	dw HITMONLEE
-
 	db FOCUS_BAND
-	db REVERSAL, ENDURE, BODY_SLAM, MEGA_KICK
+	dw REVERSAL, ENDURE, BODY_SLAM, MEGA_KICK
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3884,9 +3884,9 @@ BattleTowerMons7:
 	db "SAWAMURA-@@"
 
 	dw HERACROSS
-
 	db BRIGHTPOWDER
-	db REVERSAL, ENDURE, MEGAHORN, EARTHQUAKE
+	dw REVERSAL, ENDURE, MEGAHORN, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3911,9 +3911,9 @@ BattleTowerMons7:
 	db "HERAKUROSU@"
 
 	dw VENUSAUR
-
 	db BRIGHTPOWDER
-	db SUNNY_DAY, SOLARBEAM, SYNTHESIS, HYPER_BEAM
+	dw SUNNY_DAY, SOLARBEAM, SYNTHESIS, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3938,9 +3938,9 @@ BattleTowerMons7:
 	db "HUSIGIBANA@"
 
 	dw CHARIZARD
-
 	db SCOPE_LENS
-	db SLASH, EARTHQUAKE, HYPER_BEAM, FLAMETHROWER
+	dw SLASH, EARTHQUAKE, HYPER_BEAM, FLAMETHROWER
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3965,9 +3965,9 @@ BattleTowerMons7:
 	db "RIZA-DON@@@"
 
 	dw BLASTOISE
-
 	db QUICK_CLAW
-	db HYDRO_PUMP, ICE_PUNCH, HYPER_BEAM, IRON_TAIL
+	dw HYDRO_PUMP, ICE_PUNCH, HYPER_BEAM, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 343000 ; Exp
 	; Stat exp
@@ -3995,9 +3995,9 @@ BattleTowerMons7:
 BattleTowerMons8:
 
 	dw JOLTEON
-
 	db MIRACLEBERRY
-	db THUNDER_WAVE, THUNDERBOLT, IRON_TAIL, ROAR
+	dw THUNDER_WAVE, THUNDERBOLT, IRON_TAIL, ROAR
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4022,9 +4022,9 @@ BattleTowerMons8:
 	db "SANDA-SU@@@"
 
 	dw SNORLAX
-
 	db LEFTOVERS
-	db REST, BELLY_DRUM, SNORE, EARTHQUAKE
+	dw REST, BELLY_DRUM, SNORE, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4049,9 +4049,9 @@ BattleTowerMons8:
 	db "KABIGON@@@@"
 
 	dw HOUNDOOM
-
 	db MINT_BERRY
-	db REST, CRUNCH, FLAMETHROWER, SUNNY_DAY
+	dw REST, CRUNCH, FLAMETHROWER, SUNNY_DAY
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4076,9 +4076,9 @@ BattleTowerMons8:
 	db "HERUGA-@@@@"
 
 	dw TAUROS
-
 	db GOLD_BERRY
-	db EARTHQUAKE, BODY_SLAM, IRON_TAIL, HYPER_BEAM
+	dw EARTHQUAKE, BODY_SLAM, IRON_TAIL, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4103,9 +4103,9 @@ BattleTowerMons8:
 	db "KENTAROSU@@"
 
 	dw LAPRAS
-
 	db MINT_BERRY
-	db REST, SURF, CONFUSE_RAY, PSYCHIC_M
+	dw REST, SURF, CONFUSE_RAY, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4130,9 +4130,9 @@ BattleTowerMons8:
 	db "RAPURASU@@@"
 
 	dw TYRANITAR
-
 	db MIRACLEBERRY
-	db REST, CRUNCH, EARTHQUAKE, ROCK_SLIDE
+	dw REST, CRUNCH, EARTHQUAKE, ROCK_SLIDE
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4157,9 +4157,9 @@ BattleTowerMons8:
 	db "BANGIRASU@@"
 
 	dw GENGAR
-
 	db NO_ITEM
-	db THUNDERBOLT, SHADOW_BALL, CONFUSE_RAY, THIEF
+	dw THUNDERBOLT, SHADOW_BALL, CONFUSE_RAY, THIEF
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4184,9 +4184,9 @@ BattleTowerMons8:
 	db "GENGA-@@@@@"
 
 	dw FORRETRESS
-
 	db LEFTOVERS
-	db EXPLOSION, TOXIC, SOLARBEAM, SWAGGER
+	dw EXPLOSION, TOXIC, SOLARBEAM, SWAGGER
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4211,9 +4211,9 @@ BattleTowerMons8:
 	db "HUoRETOSU@@"
 
 	dw KINGDRA
-
 	db MINT_BERRY
-	db REST, SURF, BLIZZARD, DRAGONBREATH
+	dw REST, SURF, BLIZZARD, DRAGONBREATH
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4238,9 +4238,9 @@ BattleTowerMons8:
 	db "KINGUDORA@@"
 
 	dw DRAGONITE
-
 	db GOLD_BERRY
-	db THUNDER_WAVE, SURF, THUNDERBOLT, OUTRAGE
+	dw THUNDER_WAVE, SURF, THUNDERBOLT, OUTRAGE
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4265,9 +4265,9 @@ BattleTowerMons8:
 	db "KAIRIyu-@@@"
 
 	dw PORYGON2
-
 	db LEFTOVERS
-	db PSYCHIC_M, RECOVER, HYPER_BEAM, TRI_ATTACK
+	dw PSYCHIC_M, RECOVER, HYPER_BEAM, TRI_ATTACK
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4292,9 +4292,9 @@ BattleTowerMons8:
 	db "PORIGON2@@@"
 
 	dw JYNX
-
 	db QUICK_CLAW
-	db LOVELY_KISS, BLIZZARD, DREAM_EATER, PSYCHIC_M
+	dw LOVELY_KISS, BLIZZARD, DREAM_EATER, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4319,9 +4319,9 @@ BattleTowerMons8:
 	db "RU-ZIyuRA@@"
 
 	dw MANTINE
-
 	db GOLD_BERRY
-	db SURF, CONFUSE_RAY, BLIZZARD, WING_ATTACK
+	dw SURF, CONFUSE_RAY, BLIZZARD, WING_ATTACK
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4346,9 +4346,9 @@ BattleTowerMons8:
 	db "MANTAIN@@@@"
 
 	dw SKARMORY
-
 	db QUICK_CLAW
-	db STEEL_WING, FLY, MUD_SLAP, TOXIC
+	dw STEEL_WING, FLY, MUD_SLAP, TOXIC
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4373,9 +4373,9 @@ BattleTowerMons8:
 	db "EA-MUDO@@@@"
 
 	dw MOLTRES
-
 	db CHARCOAL
-	db FLAMETHROWER, SKY_ATTACK, STEEL_WING, HYPER_BEAM
+	dw FLAMETHROWER, SKY_ATTACK, STEEL_WING, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4400,9 +4400,9 @@ BattleTowerMons8:
 	db "HUaIYA-@@@@"
 
 	dw AERODACTYL
-
 	db MIRACLEBERRY
-	db HYPER_BEAM, REST, EARTHQUAKE, ROAR
+	dw HYPER_BEAM, REST, EARTHQUAKE, ROAR
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4427,9 +4427,9 @@ BattleTowerMons8:
 	db "PUTERA@@@@@"
 
 	dw ELECTRODE
-
 	db KINGS_ROCK
-	db THUNDERBOLT, EXPLOSION, MIRROR_COAT, TOXIC
+	dw THUNDERBOLT, EXPLOSION, MIRROR_COAT, TOXIC
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4454,9 +4454,9 @@ BattleTowerMons8:
 	db "MARUMAIN@@@"
 
 	dw DUGTRIO
-
 	db SCOPE_LENS
-	db SLASH, EARTHQUAKE, THIEF, MUD_SLAP
+	dw SLASH, EARTHQUAKE, THIEF, MUD_SLAP
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4481,9 +4481,9 @@ BattleTowerMons8:
 	db "DAGUTORIO@@"
 
 	dw VICTREEBEL
-
 	db QUICK_CLAW
-	db GIGA_DRAIN, SLUDGE_BOMB, HYPER_BEAM, TOXIC
+	dw GIGA_DRAIN, SLUDGE_BOMB, HYPER_BEAM, TOXIC
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4508,9 +4508,9 @@ BattleTowerMons8:
 	db "UTUBOtuTO@@"
 
 	dw PINSIR
-
 	db GOLD_BERRY
-	db HYPER_BEAM, SUBMISSION, STRENGTH, TOXIC
+	dw HYPER_BEAM, SUBMISSION, STRENGTH, TOXIC
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4535,9 +4535,9 @@ BattleTowerMons8:
 	db "KAIROSU@@@@"
 
 	dw GRANBULL
-
 	db BRIGHTPOWDER
-	db ROAR, SHADOW_BALL, HYPER_BEAM, THUNDERPUNCH
+	dw ROAR, SHADOW_BALL, HYPER_BEAM, THUNDERPUNCH
+
 	dw 0 ; OT ID
 	dt 512000 ; Exp
 	; Stat exp
@@ -4565,9 +4565,9 @@ BattleTowerMons8:
 BattleTowerMons9:
 
 	dw UMBREON
-
 	db KINGS_ROCK
-	db FAINT_ATTACK, MUD_SLAP, MOONLIGHT, CONFUSE_RAY
+	dw FAINT_ATTACK, MUD_SLAP, MOONLIGHT, CONFUSE_RAY
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4592,9 +4592,9 @@ BattleTowerMons9:
 	db "BURAtuKI-@@"
 
 	dw DRAGONITE
-
 	db QUICK_CLAW
-	db FIRE_BLAST, HYPER_BEAM, OUTRAGE, BLIZZARD
+	dw FIRE_BLAST, HYPER_BEAM, OUTRAGE, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4619,9 +4619,9 @@ BattleTowerMons9:
 	db "KAIRIyu-@@@"
 
 	dw STARMIE
-
 	db LEFTOVERS
-	db RECOVER, THUNDERBOLT, SURF, PSYCHIC_M
+	dw RECOVER, THUNDERBOLT, SURF, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4646,9 +4646,9 @@ BattleTowerMons9:
 	db "SUTA-MI-@@@"
 
 	dw CLOYSTER
-
 	db LEFTOVERS
-	db EXPLOSION, BLIZZARD, SURF, ICY_WIND
+	dw EXPLOSION, BLIZZARD, SURF, ICY_WIND
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4673,9 +4673,9 @@ BattleTowerMons9:
 	db "PARUSIeN@@@"
 
 	dw CROBAT
-
 	db GOLD_BERRY
-	db WING_ATTACK, HAZE, HYPER_BEAM, GIGA_DRAIN
+	dw WING_ATTACK, HAZE, HYPER_BEAM, GIGA_DRAIN
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4700,9 +4700,9 @@ BattleTowerMons9:
 	db "KUROBAtuTO@"
 
 	dw PORYGON2
-
 	db QUICK_CLAW
-	db TOXIC, PSYCHIC_M, RECOVER, PROTECT
+	dw TOXIC, PSYCHIC_M, RECOVER, PROTECT
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4727,9 +4727,9 @@ BattleTowerMons9:
 	db "PORIGON2@@@"
 
 	dw KINGDRA
-
 	db LEFTOVERS
-	db DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
+	dw DRAGONBREATH, SURF, HYPER_BEAM, BLIZZARD
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4754,9 +4754,9 @@ BattleTowerMons9:
 	db "KINGUDORA@@"
 
 	dw TYRANITAR
-
 	db QUICK_CLAW
-	db HYPER_BEAM, CRUNCH, EARTHQUAKE, ROCK_SLIDE
+	dw HYPER_BEAM, CRUNCH, EARTHQUAKE, ROCK_SLIDE
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4781,9 +4781,9 @@ BattleTowerMons9:
 	db "BANGIRASU@@"
 
 	dw LAPRAS
-
 	db MINT_BERRY
-	db REST, SURF, THUNDERBOLT, PSYCHIC_M
+	dw REST, SURF, THUNDERBOLT, PSYCHIC_M
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4808,9 +4808,9 @@ BattleTowerMons9:
 	db "RAPURASU@@@"
 
 	dw ESPEON
-
 	db GOLD_BERRY
-	db PSYCHIC_M, SHADOW_BALL, SUNNY_DAY, MORNING_SUN
+	dw PSYCHIC_M, SHADOW_BALL, SUNNY_DAY, MORNING_SUN
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4835,9 +4835,9 @@ BattleTowerMons9:
 	db "E-HUi@@@@@@"
 
 	dw MACHAMP
-
 	db QUICK_CLAW
-	db CROSS_CHOP, VITAL_THROW, FIRE_BLAST, EARTHQUAKE
+	dw CROSS_CHOP, VITAL_THROW, FIRE_BLAST, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4862,9 +4862,9 @@ BattleTowerMons9:
 	db "KAIRIKI-@@@"
 
 	dw SNORLAX
-
 	db MIRACLEBERRY
-	db FIRE_BLAST, SURF, EARTHQUAKE, HYPER_BEAM
+	dw FIRE_BLAST, SURF, EARTHQUAKE, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4889,9 +4889,9 @@ BattleTowerMons9:
 	db "KABIGON@@@@"
 
 	dw ARCANINE
-
 	db MINT_BERRY
-	db SUNNY_DAY, FLAMETHROWER, EXTREMESPEED, REST
+	dw SUNNY_DAY, FLAMETHROWER, EXTREMESPEED, REST
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4916,9 +4916,9 @@ BattleTowerMons9:
 	db "UINDEi@@@@@"
 
 	dw BLISSEY
-
 	db LEFTOVERS
-	db SOLARBEAM, SUNNY_DAY, SOFTBOILED, FIRE_BLAST
+	dw SOLARBEAM, SUNNY_DAY, SOFTBOILED, FIRE_BLAST
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4943,9 +4943,9 @@ BattleTowerMons9:
 	db "HAPINASU@@@"
 
 	dw HOUNDOOM
-
 	db BRIGHTPOWDER
-	db FLAMETHROWER, CRUNCH, SUNNY_DAY, SOLARBEAM
+	dw FLAMETHROWER, CRUNCH, SUNNY_DAY, SOLARBEAM
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4970,9 +4970,9 @@ BattleTowerMons9:
 	db "HERUGA-@@@@"
 
 	dw SKARMORY
-
 	db QUICK_CLAW
-	db SANDSTORM, STEEL_WING, TOXIC, RETURN
+	dw SANDSTORM, STEEL_WING, TOXIC, RETURN
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -4997,9 +4997,9 @@ BattleTowerMons9:
 	db "EA-MUDO@@@@"
 
 	dw SHUCKLE
-
 	db LEFTOVERS
-	db TOXIC, WRAP, PROTECT, ENCORE
+	dw TOXIC, WRAP, PROTECT, ENCORE
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -5024,9 +5024,9 @@ BattleTowerMons9:
 	db "TUBOTUBO@@@"
 
 	dw FLAREON
-
 	db MINT_BERRY
-	db HYPER_BEAM, FLAMETHROWER, SHADOW_BALL, ROAR
+	dw HYPER_BEAM, FLAMETHROWER, SHADOW_BALL, ROAR
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -5051,9 +5051,9 @@ BattleTowerMons9:
 	db "BU-SUTA-@@@"
 
 	dw MILTANK
-
 	db LEFTOVERS
-	db MILK_DRINK, EARTHQUAKE, ATTRACT, BODY_SLAM
+	dw MILK_DRINK, EARTHQUAKE, ATTRACT, BODY_SLAM
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -5078,9 +5078,9 @@ BattleTowerMons9:
 	db "MIRUTANKU@@"
 
 	dw TAUROS
-
 	db PINK_BOW
-	db THUNDERBOLT, HYPER_BEAM, ATTRACT, EARTHQUAKE
+	dw THUNDERBOLT, HYPER_BEAM, ATTRACT, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -5105,9 +5105,9 @@ BattleTowerMons9:
 	db "KENTAROSU@@"
 
 	dw MUK
-
 	db QUICK_CLAW
-	db TOXIC, SLUDGE_BOMB, ATTRACT, GIGA_DRAIN
+	dw TOXIC, SLUDGE_BOMB, ATTRACT, GIGA_DRAIN
+
 	dw 0 ; OT ID
 	dt 729000 ; Exp
 	; Stat exp
@@ -5135,9 +5135,9 @@ BattleTowerMons9:
 BattleTowerMons10:
 
 	dw HOUNDOOM
-
 	db MINT_BERRY
-	db CRUNCH, FLAMETHROWER, ROAR, REST
+	dw CRUNCH, FLAMETHROWER, ROAR, REST
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5162,9 +5162,9 @@ BattleTowerMons10:
 	db "HERUGA-@@@@"
 
 	dw MACHAMP
-
 	db QUICK_CLAW
-	db CROSS_CHOP, EARTHQUAKE, HYPER_BEAM, VITAL_THROW
+	dw CROSS_CHOP, EARTHQUAKE, HYPER_BEAM, VITAL_THROW
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5189,9 +5189,9 @@ BattleTowerMons10:
 	db "KAIRIKI-@@@"
 
 	dw KINGDRA
-
 	db LEFTOVERS
-	db SURF, DRAGONBREATH, REST, TOXIC
+	dw SURF, DRAGONBREATH, REST, TOXIC
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5216,9 +5216,9 @@ BattleTowerMons10:
 	db "KINGUDORA@@"
 
 	dw JOLTEON
-
 	db BRIGHTPOWDER
-	db THUNDERBOLT, ROAR, THUNDER_WAVE, IRON_TAIL
+	dw THUNDERBOLT, ROAR, THUNDER_WAVE, IRON_TAIL
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5243,9 +5243,9 @@ BattleTowerMons10:
 	db "SANDA-SU@@@"
 
 	dw TAUROS
-
 	db KINGS_ROCK
-	db HYPER_BEAM, EARTHQUAKE, IRON_TAIL, THUNDERBOLT
+	dw HYPER_BEAM, EARTHQUAKE, IRON_TAIL, THUNDERBOLT
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5270,9 +5270,9 @@ BattleTowerMons10:
 	db "KENTAROSU@@"
 
 	dw ARCANINE
-
 	db LEFTOVERS
-	db FLAMETHROWER, EXTREMESPEED, IRON_TAIL, HYPER_BEAM
+	dw FLAMETHROWER, EXTREMESPEED, IRON_TAIL, HYPER_BEAM
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5297,9 +5297,9 @@ BattleTowerMons10:
 	db "UINDEi@@@@@"
 
 	dw CHARIZARD
-
 	db SCOPE_LENS
-	db FLAMETHROWER, EARTHQUAKE, SLASH, FLY
+	dw FLAMETHROWER, EARTHQUAKE, SLASH, FLY
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5324,9 +5324,9 @@ BattleTowerMons10:
 	db "RIZA-DON@@@"
 
 	dw ELECTRODE
-
 	db BRIGHTPOWDER
-	db THUNDER_WAVE, THUNDERBOLT, EXPLOSION, MIRROR_COAT
+	dw THUNDER_WAVE, THUNDERBOLT, EXPLOSION, MIRROR_COAT
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5351,9 +5351,9 @@ BattleTowerMons10:
 	db "MARUMAIN@@@"
 
 	dw RHYDON
-
 	db MIRACLEBERRY
-	db SURF, EARTHQUAKE, HYPER_BEAM, ROCK_SLIDE
+	dw SURF, EARTHQUAKE, HYPER_BEAM, ROCK_SLIDE
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5378,9 +5378,9 @@ BattleTowerMons10:
 	db "SAIDON@@@@@"
 
 	dw STEELIX
-
 	db LEFTOVERS
-	db EARTHQUAKE, HYPER_BEAM, SWAGGER, CRUNCH
+	dw EARTHQUAKE, HYPER_BEAM, SWAGGER, CRUNCH
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5405,9 +5405,9 @@ BattleTowerMons10:
 	db "HAGANE-RU@@"
 
 	dw FEAROW
-
 	db KINGS_ROCK
-	db DRILL_PECK, STEEL_WING, HYPER_BEAM, MUD_SLAP
+	dw DRILL_PECK, STEEL_WING, HYPER_BEAM, MUD_SLAP
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5432,9 +5432,9 @@ BattleTowerMons10:
 	db "ONIDORIRU@@"
 
 	dw MISDREAVUS
-
 	db FOCUS_BAND
-	db PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
+	dw PERISH_SONG, MEAN_LOOK, PAIN_SPLIT, SHADOW_BALL
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5459,9 +5459,9 @@ BattleTowerMons10:
 	db "MUUMA@@@@@@"
 
 	dw SNEASEL
-
 	db SCOPE_LENS
-	db SLASH, BLIZZARD, DREAM_EATER, FAINT_ATTACK
+	dw SLASH, BLIZZARD, DREAM_EATER, FAINT_ATTACK
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5486,9 +5486,9 @@ BattleTowerMons10:
 	db "NIyu-RA@@@@"
 
 	dw SCIZOR
-
 	db QUICK_CLAW
-	db STEEL_WING, HYPER_BEAM, SLASH, TOXIC
+	dw STEEL_WING, HYPER_BEAM, SLASH, TOXIC
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5513,9 +5513,9 @@ BattleTowerMons10:
 	db "HAtuSAMU@@@"
 
 	dw BLISSEY
-
 	db LEFTOVERS
-	db THUNDERBOLT, BLIZZARD, FIRE_BLAST, SOFTBOILED
+	dw THUNDERBOLT, BLIZZARD, FIRE_BLAST, SOFTBOILED
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5540,9 +5540,9 @@ BattleTowerMons10:
 	db "HAPINASU@@@"
 
 	dw PILOSWINE
-
 	db MINT_BERRY
-	db REST, BLIZZARD, HYPER_BEAM, EARTHQUAKE
+	dw REST, BLIZZARD, HYPER_BEAM, EARTHQUAKE
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5567,9 +5567,9 @@ BattleTowerMons10:
 	db "INOMU-@@@@@"
 
 	dw EXEGGUTOR
-
 	db QUICK_CLAW
-	db PSYCHIC_M, TOXIC, EXPLOSION, GIGA_DRAIN
+	dw PSYCHIC_M, TOXIC, EXPLOSION, GIGA_DRAIN
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5594,9 +5594,9 @@ BattleTowerMons10:
 	db "NAtuSI-@@@@"
 
 	dw OMASTAR
-
 	db LEFTOVERS
-	db SURF, ANCIENTPOWER, BLIZZARD, TOXIC
+	dw SURF, ANCIENTPOWER, BLIZZARD, TOXIC
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5621,9 +5621,9 @@ BattleTowerMons10:
 	db "OMUSUTA-@@@"
 
 	dw GOLEM
-
 	db BRIGHTPOWDER
-	db EXPLOSION, EARTHQUAKE, ROCK_SLIDE, FIRE_BLAST
+	dw EXPLOSION, EARTHQUAKE, ROCK_SLIDE, FIRE_BLAST
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5648,9 +5648,9 @@ BattleTowerMons10:
 	db "GORO-NIya@@"
 
 	dw HITMONCHAN
-
 	db FOCUS_BAND
-	db COUNTER, FIRE_PUNCH, THUNDERPUNCH, ICE_PUNCH
+	dw COUNTER, FIRE_PUNCH, THUNDERPUNCH, ICE_PUNCH
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
@@ -5675,9 +5675,9 @@ BattleTowerMons10:
 	db "EBIWARA-@@@"
 
 	dw LANTURN
-
 	db QUICK_CLAW
-	db SURF, RAIN_DANCE, ZAP_CANNON, CONFUSE_RAY
+	dw SURF, RAIN_DANCE, ZAP_CANNON, CONFUSE_RAY
+
 	dw 0 ; OT ID
 	dt 1000000 ; Exp
 	; Stat exp
