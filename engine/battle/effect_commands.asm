@@ -1957,7 +1957,6 @@ BattleCommand_LowerSub:
 
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	inc a
 	ld [wKickCounter], a
 	ld a, SUBSTITUTE
@@ -2025,9 +2024,8 @@ BattleCommand_MoveAnimNoSub:
 .triplekick
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
-	call PlayFXAnimID
+	call SetMoveAnimationID
+	call PlaySelectedFXAnim
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2048,13 +2046,13 @@ BattleCommand_MoveAnimNoSub:
 	push af
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
+	call SetMoveAnimationID
 	pop af
-	jp z, PlayFXAnimID
+	jr z, .play_anim
 	xor a
 	ld [wNumHits], a
-	jp PlayFXAnimID
+.play_anim
+	jp PlaySelectedFXAnim
 
 BattleCommand_StatUpAnim:
 	ld a, [wAttackMissed]
@@ -2083,9 +2081,8 @@ BattleCommand_StatUpDownAnim:
 	ld [wKickCounter], a
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld e, a
-	ld d, 0
-	jp PlayFXAnimID
+	call SetMoveAnimationID
+	jp PlaySelectedFXAnim
 
 BattleCommand_SwitchTurn:
 ; switchturn
@@ -2108,7 +2105,6 @@ BattleCommand_RaiseSub:
 
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	ld a, $2
 	ld [wKickCounter], a
 	ld a, SUBSTITUTE
@@ -2453,7 +2449,6 @@ BattleCommand_CheckFaint:
 	call BattleCommand_SwitchTurn
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 	inc a
 	ld [wKickCounter], a
 	ld a, DESTINY_BOND
@@ -3447,7 +3442,7 @@ PlayFXAnimID:
 	ld [wFXAnimID], a
 	ld a, d
 	ld [wFXAnimID + 1], a
-
+PlaySelectedFXAnim:
 	ld c, 3
 	call DelayFrames
 	callfar PlayBattleAnim
@@ -6807,15 +6802,12 @@ AnimateCurrentMove:
 	ret
 
 PlayDamageAnim:
-	xor a
-	ld [wFXAnimID + 1], a
-
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	and a
 	ret z
 
-	ld [wFXAnimID], a
+	call SetMoveAnimationID
 
 	ldh a, [hBattleTurn]
 	and a
@@ -6831,7 +6823,6 @@ PlayDamageAnim:
 LoadMoveAnim:
 	xor a
 	ld [wNumHits], a
-	ld [wFXAnimID + 1], a
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -6841,8 +6832,7 @@ LoadMoveAnim:
 	; fallthrough
 
 LoadAnim:
-	ld [wFXAnimID], a
-
+	call SetMoveAnimationID
 	; fallthrough
 
 PlayUserBattleAnim:
@@ -6852,6 +6842,16 @@ PlayUserBattleAnim:
 	callfar PlayBattleAnim
 	pop bc
 	pop de
+	pop hl
+	ret
+
+SetMoveAnimationID:
+	push hl
+	call GetMoveIndexFromID
+	ld a, l
+	ld [wFXAnimID], a
+	ld a, h
+	ld [wFXAnimID + 1], a
 	pop hl
 	ret
 

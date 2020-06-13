@@ -1510,11 +1510,15 @@ Tackle_BGEffect25_2d_two:
 
 Functionc88a5:
 	push af
-	ld a, [wFXAnimID + 1] ; FXAnimID + 1
-	or a
+	ld a, [wFXAnimID + 1]
+	if HIGH(ROLLOUT)
+		cp HIGH(ROLLOUT)
+	else
+		or a
+	endc
 	jr nz, .not_rollout
-	ld a, [wFXAnimID] ; FXAnimID
-	cp ROLLOUT
+	ld a, [wFXAnimID]
+	cp LOW(ROLLOUT)
 	jr z, .rollout
 .not_rollout
 	pop af

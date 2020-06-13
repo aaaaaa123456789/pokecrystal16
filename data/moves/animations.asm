@@ -1,5 +1,28 @@
-BattleAnimations::
 ; entries correspond to constants/move_constants.asm
+; negative entries first (see the constants file for details)
+	dw BattleAnim_ThrowPokeBall
+	dw BattleAnim_SendOutMon
+	dw BattleAnim_ReturnMon
+	dw BattleAnim_Confused
+	dw BattleAnim_Slp
+	dw BattleAnim_Brn
+	dw BattleAnim_Psn
+	dw BattleAnim_Sap
+	dw BattleAnim_Frz
+	dw BattleAnim_Par
+	dw BattleAnim_InLove
+	dw BattleAnim_InSandstorm
+	dw BattleAnim_InNightmare
+	dw BattleAnim_InWhirlpool
+	dw BattleAnim_Miss
+	dw BattleAnim_EnemyDamage
+	dw BattleAnim_EnemyStatDown
+	dw BattleAnim_PlayerStatDown
+	dw BattleAnim_PlayerDamage
+	dw BattleAnim_Wobble
+	dw BattleAnim_Shake
+	dw BattleAnim_HitConfusion
+BattleAnimations::
 	dw BattleAnim_0
 	dw BattleAnim_Pound
 	dw BattleAnim_KarateChop
@@ -252,38 +275,9 @@ BattleAnimations::
 	dw BattleAnim_RockSmash
 	dw BattleAnim_Whirlpool
 	dw BattleAnim_BeatUp
-	dw BattleAnim_252
-	dw BattleAnim_253
-	dw BattleAnim_254
 	dw BattleAnim_SweetScent2
-; $100
-	dw BattleAnim_ThrowPokeBall
-	dw BattleAnim_SendOutMon
-	dw BattleAnim_ReturnMon
-	dw BattleAnim_Confused
-	dw BattleAnim_Slp
-	dw BattleAnim_Brn
-	dw BattleAnim_Psn
-	dw BattleAnim_Sap
-	dw BattleAnim_Frz
-	dw BattleAnim_Par
-	dw BattleAnim_InLove
-	dw BattleAnim_InSandstorm
-	dw BattleAnim_InNightmare
-	dw BattleAnim_InWhirlpool
-	dw BattleAnim_Miss
-	dw BattleAnim_EnemyDamage
-	dw BattleAnim_EnemyStatDown
-	dw BattleAnim_PlayerStatDown
-	dw BattleAnim_PlayerDamage
-	dw BattleAnim_Wobble
-	dw BattleAnim_Shake
-	dw BattleAnim_HitConfusion
 
 BattleAnim_0:
-BattleAnim_252:
-BattleAnim_253:
-BattleAnim_254:
 BattleAnim_MirrorMove:
 	anim_ret
 
