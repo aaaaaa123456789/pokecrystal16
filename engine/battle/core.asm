@@ -635,11 +635,18 @@ ParsePlayerAction:
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 	ld a, [wCurPlayerMove]
-	cp STRUGGLE
-	jr z, .struggle
-	call PlayClickSFX
-
-.struggle
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(STRUGGLE)
+		cp HIGH(STRUGGLE)
+	else
+		and a
+	endc
+	jr nz, .not_struggle
+	ld a, l
+	cp LOW(STRUGGLE)
+.not_struggle
+	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
 	pop af
@@ -835,10 +842,19 @@ GetMovePriority:
 	ld b, a
 
 	; Vital Throw goes last.
-	cp VITAL_THROW
-	ld a, 0
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(VITAL_THROW)
+		cp HIGH(VITAL_THROW)
+	else
+		and a
+	endc
+	jr nz, .not_vital_throw
+	ld a, l
+	sub LOW(VITAL_THROW)
 	ret z
 
+.not_vital_throw
 	call GetMoveEffect
 	ld hl, MoveEffectPriorities
 .loop
@@ -1395,11 +1411,22 @@ HandleMysteryberry:
 .restore
 	; lousy hack
 	ld a, [hl]
-	cp SKETCH
-	ld b, 1
-	jr z, .sketch
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	if HIGH(SKETCH)
+		cp HIGH(SKETCH)
+	else
+		and a
+	endc
+	ld a, l
+	pop hl
 	ld b, 5
-.sketch
+	jr nz, .not_sketch
+	cp LOW(SKETCH)
+	jr nz, .not_sketch
+	ld b, 1
+.not_sketch
 	ld a, [de]
 	add b
 	ld [de], a
@@ -1503,7 +1530,10 @@ HandleFutureSight:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	push af
-	ld a, FUTURE_SIGHT
+	push hl
+	ld hl, FUTURE_SIGHT
+	call GetMoveIDFromIndex
+	pop hl
 	ld [hl], a
 
 	callfar UpdateMoveData
@@ -5743,7 +5773,8 @@ MoveInfoBox:
 	ret
 
 CheckPlayerHasUsableMoves:
-	ld a, STRUGGLE
+	ld hl, STRUGGLE
+	call GetMoveIDFromIndex
 	ld [wCurPlayerMove], a
 	ld a, [wPlayerDisableCount]
 	and a
@@ -5935,7 +5966,8 @@ ParseEnemyAction:
 	ret
 
 .struggle
-	ld a, STRUGGLE
+	ld hl, STRUGGLE
+	call GetMoveIDFromIndex
 	jr .finish
 
 ResetVarsForSubstatusRage:

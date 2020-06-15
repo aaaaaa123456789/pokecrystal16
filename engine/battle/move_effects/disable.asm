@@ -22,10 +22,13 @@ BattleCommand_Disable:
 	call GetBattleVar
 	and a
 	jr z, .failed
-	cp STRUGGLE
+	ld b, a
+	push bc
+	ld bc, STRUGGLE
+	call CompareMove
+	pop bc
 	jr z, .failed
 
-	ld b, a
 	ld c, $ff
 .loop
 	inc c
