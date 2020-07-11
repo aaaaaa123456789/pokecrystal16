@@ -82,6 +82,10 @@ sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
 sLuckyIDNumber::  dw
 
+SECTION "Saved 16-bit conversion tables", SRAM
+; the Pokémon index table isn't stored here to improve save data packing
+sMoveIndexTable:: ds wMoveIndexTableEnd - wMoveIndexTable
+sBackupMoveIndexTable:: ds wMoveIndexTableEnd - wMoveIndexTable
 
 SECTION "Backup Save", SRAM
 
@@ -99,10 +103,12 @@ sBackupGameDataEnd::
 
 sBackupPokemonIndexTable:: ds wPokemonIndexTableEnd - wPokemonIndexTable
 
+sBackupConversionTableChecksum:: dw
+
 sBackupSaveDataEnd::
 
-; bd83
-	ds $8a
+; bd85
+	ds $88
 ; bf0d
 
 sBackupChecksum:: dw
@@ -128,10 +134,12 @@ sGameDataEnd::
 
 sPokemonIndexTable:: ds wPokemonIndexTableEnd - wPokemonIndexTable
 
+sConversionTableChecksum:: dw
+
 sSaveDataEnd::
 
-; ab83
-	ds $8a
+; ab85
+	ds $88
 ; ad0d
 
 sChecksum:: dw
