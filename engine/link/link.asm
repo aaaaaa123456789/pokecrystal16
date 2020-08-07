@@ -227,7 +227,8 @@ Gen2ToGen2LinkComms:
 	ld [de], a
 	ld hl, wOTPartyMons
 	ld de, wStringBuffer1
-	ld bc, 2 * PARTY_LENGTH + 15 ;6 preamble bytes, 2 replacement bytes, 1 stop byte, and 6 extra just in case
+	; 6 preamble bytes, 2 replacement bytes, 1 stop byte, and 6 extra just in case
+	ld bc, 2 * (1 + NUM_MOVES) * PARTY_LENGTH + 15
 	call Serial_ExchangeBytes
 	ld hl, wLinkData
 	ld de, wOTPlayerName
@@ -766,10 +767,27 @@ Link_PrepPartyData_Gen1:
 
 .done_steel
 	pop bc
-	push bc
 	ld hl, MON_ITEM
 	add hl, bc
-	ld bc, MON_HAPPINESS - MON_ITEM
+	push bc
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld b, NUM_MOVES
+.move_loop
+	ld a, [hli]
+	push hl
+	call GetMoveIndexFromID
+	ld a, h
+	sub 1
+	sbc a
+	and l
+	pop hl
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .move_loop
+	ld c, MON_HAPPINESS - MON_ID
 	call CopyBytes
 	pop bc
 
@@ -983,13 +1001,13 @@ Link_FixOTParty_Gen2:
 	jr z, .skip_preamble_loop
 	dec hl
 	push hl
-	ld c, 2 * PARTY_LENGTH + 2
+	ld c, 2 * (1 + NUM_MOVES) * PARTY_LENGTH + 2
 	call Link_ComputeBufferChecksum
 	cp [hl]
 	pop hl
 	scf
 	ret nz
-	ld a, 2 * PARTY_LENGTH
+	ld a, 2 * (1 + NUM_MOVES) * PARTY_LENGTH
 	call Link_FixIndexListAfterTransfer
 	ld d, h
 	ld e, l
@@ -1003,13 +1021,30 @@ Link_FixOTParty_Gen2:
 	ld h, a
 	call GetPokemonIDFromIndex
 	ld b, a
+	ld [wTempSpecies], a
 	push bc
 	ld b, 0
 	ld a, PARTYMON_STRUCT_LENGTH
 	ld hl, wOTPartyMon1Species
 	call AddNTimes
 	pop bc
-	ld [hl], b
+	ld a, b
+	ld [hli], a
+	inc hl
+	ld b, NUM_MOVES
+.move_loop
+	push hl
+	ld a, [de]
+	inc de
+	ld l, a
+	ld a, [de]
+	inc de
+	ld h, a
+	call GetMoveIDFromIndex
+	pop hl
+	ld [hli], a
+	dec b
+	jr nz, .move_loop
 	ld a, LOW(wOTPartySpecies)
 	add a, c
 	ld l, a
@@ -1021,7 +1056,8 @@ Link_FixOTParty_Gen2:
 	jr z, .no_species_update
 	call IsAPokemon
 	jr c, .no_species_update
-	ld [hl], b
+	ld a, [wTempSpecies]
+	ld [hl], a
 .no_species_update
 	inc c
 	ld a, c
@@ -1033,18 +1069,28 @@ Link_FixOTParty_Gen2:
 Link_BuildIndexList:
 	; in: de: address
 	push de
-	lb bc, 0, PARTY_LENGTH
+	ld c, PARTY_LENGTH
 	ld hl, wPartyMon1Species
 .loop
+	ld a, [hli]
 	push hl
-	ld a, [hl]
 	ld hl, 0
 	call IsAPokemon
 	call nc, GetPokemonIndexFromID
 	call .write
 	pop hl
+	inc hl
+	ld b, NUM_MOVES
+.move_loop
+	ld a, [hli]
+	push hl
+	call GetMoveIndexFromID
+	call .write
+	pop hl
+	dec b
+	jr nz, .move_loop
 	ld a, c
-	ld c, PARTYMON_STRUCT_LENGTH
+	ld c, PARTYMON_STRUCT_LENGTH - MON_ID
 	add hl, bc
 	ld c, a
 	dec c
@@ -1308,7 +1354,22 @@ Function2868a:
 	ld [de], a
 	inc de
 	pop bc
-	ld bc, $19
+	ld b, NUM_MOVES
+.move_loop
+	ld a, [hli]
+	push hl
+	ld l, a
+	cp MOVE_TABLE_MINIMUM_RESERVED_INDEX
+	ccf
+	sbc a
+	ld h, a
+	call GetMoveIDFromIndex
+	pop hl
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .move_loop
+	ld c, MON_HAPPINESS - MON_ID
 	call CopyBytes
 	pop bc
 	ld d, h
